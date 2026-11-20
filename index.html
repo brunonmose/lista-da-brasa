@@ -1,0 +1,1515 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lista da Brasa</title>
+<meta name="description" content="Quanto de carne comprar por pessoa, quanto custa e quanto cada um põe. Diz quantos vêm e quanto a turma tem: a Lista da Brasa monta a lista do mercado na hora, com preço, preparo e a ordem da grelha.">
+<link rel="canonical" href="https://brunonmose.github.io/lista-da-brasa/">
+<link rel="icon" href="icone.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Lista da Brasa">
+<meta property="og:title" content="Lista da Brasa: quanto comprar e quanto cada um põe">
+<meta property="og:description" content="Diz quantos vêm e quanto a turma tem. A lista do mercado sai na hora, com preço, e a conta de cada um pronta para o grupo.">
+<meta property="og:url" content="https://brunonmose.github.io/lista-da-brasa/">
+<meta property="og:image" content="https://brunonmose.github.io/lista-da-brasa/fotos/turma-na-parrilla.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="904">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --papel:#FAF6EF; --papel-2:#F2EBDF; --papel-3:#E9DFCF; --branco:#FFFDF9;
+  --carvao:#1F1A17; --carvao-2:#2B2420; --brasa:#C2410C; --brasa-esc:#9A3409; --brasa-clara:#F2703A;
+  --mostarda:#F2B430; --cinza:#5C534C; --linha:#E2D6C4; --verde:#2F7D4A; --vermelho:#B42318;
+  --raio:16px; --sombra:0 18px 50px -18px rgba(31,26,23,.45);
+  --titulo:'Bricolage Grotesque', system-ui, sans-serif; --texto:'Inter', system-ui, sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--papel);color:var(--carvao);font-family:var(--texto);font-size:16.5px;line-height:1.5;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+img,svg{display:block;max-width:100%}
+a{color:var(--brasa)}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+h1,h2,h3{font-family:var(--titulo);font-weight:800;letter-spacing:-.02em;line-height:1.02;margin:0}
+h2{font-size:clamp(32px,4.2vw,52px)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+.num{font-variant-numeric:tabular-nums}
+.olho{font-weight:700;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--brasa);margin:0 0 10px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.logo-svg{--la:var(--carvao);--lb:var(--brasa)}
+.logo-svg.esc{--la:var(--papel);--lb:var(--brasa-clara)}
+
+/* botões */
+.bt{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;background:var(--brasa);color:#fff;font-weight:700;font-size:16px;padding:14px 20px;text-decoration:none;min-height:50px;line-height:1.15;text-align:center}
+.bt:hover{background:var(--brasa-esc)}
+.bt.contorno{background:transparent;color:var(--carvao);box-shadow:inset 0 0 0 2px var(--carvao)}
+.bt.contorno:hover{background:var(--carvao);color:var(--papel)}
+.bt svg{width:20px;height:20px;flex:none}
+.link{background:none;border:0;padding:6px 0;color:var(--brasa);font-weight:600;text-decoration:underline;text-underline-offset:3px;font-size:15px}
+
+/* topo */
+.topo{position:sticky;top:0;z-index:30;background:rgba(250,246,239,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.topo .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+.topo .logo-svg{width:190px;height:auto}
+.nav{display:flex;gap:26px;align-items:center}
+.nav a{color:var(--carvao);text-decoration:none;font-weight:600;font-size:15px}
+.nav a:hover{color:var(--brasa)}
+.ic-cart{width:18px;height:18px;display:inline-block;vertical-align:-3px;margin-right:6px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto 1fr}
+.hero-esq{grid-column:1;grid-row:1}
+.hero-dir{grid-column:2;grid-row:1 / span 2}
+.hero-mandar{grid-column:1;grid-row:2;padding:0 40px 48px max(32px, calc((100vw - 1240px)/2 + 32px))}
+.hero-mandar .mandar{max-width:none;margin-top:0;box-shadow:none;border:2px solid var(--linha)}
+.hero-esq{padding:44px 40px 28px max(32px, calc((100vw - 1240px)/2 + 32px))}
+.hero h1{font-size:clamp(40px,4.6vw,66px)}
+.hero h1 em{font-style:normal;color:var(--brasa)}
+.hero .sub{font-size:18.5px;color:var(--cinza);margin:14px 0 0;max-width:520px}
+.calc{margin-top:26px;background:var(--branco);border:2px solid var(--carvao);border-radius:var(--raio);padding:20px 22px;box-shadow:6px 6px 0 var(--carvao)}
+.passos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.stp{background:var(--papel);border-radius:12px;padding:10px 8px 8px;text-align:center}
+.stp label{display:block;font-weight:700;font-size:14px;line-height:1.15}
+.stp label small{display:block;font-weight:500;font-size:12px;color:var(--cinza)}
+.stp .ctl{display:flex;align-items:center;justify-content:space-between;margin-top:6px}
+.stp button{width:40px;height:40px;border-radius:50%;border:2px solid var(--carvao);background:var(--branco);font-size:22px;font-weight:700;line-height:1;display:grid;place-items:center;padding:0}
+@media (hover:hover){.stp button:hover{background:var(--carvao);color:var(--papel)}}
+.stp button:active{background:var(--carvao);color:var(--papel)}
+[id]{scroll-margin-top:76px}
+.stp input{width:52px;border:0;background:transparent;text-align:center;font-family:var(--titulo);font-weight:800;font-size:30px;padding:0;-moz-appearance:textfield}
+.stp input::-webkit-inner-spin-button,.stp input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.vaq{margin-top:12px;display:grid;grid-template-columns:1fr 170px;gap:12px;align-items:center;background:var(--papel);border-radius:12px;padding:10px 12px}
+.vaq label{font-weight:700;font-size:14.5px;line-height:1.25}
+.vaq label small{display:block;font-weight:500;color:var(--cinza);font-size:12.5px}
+.campo-r{display:flex;align-items:center;background:var(--branco);border:2px solid var(--carvao);border-radius:10px;padding:0 10px;height:46px}
+.campo-r span{font-weight:700;color:var(--cinza);margin-right:4px}
+.campo-r input{border:0;outline:0;background:transparent;width:100%;font-family:var(--titulo);font-weight:800;font-size:22px;padding:0}
+.campo-r:focus-within{box-shadow:0 0 0 3px rgba(194,65,12,.3)}
+details.finas{margin-top:12px}
+details.finas summary{cursor:pointer;font-weight:600;color:var(--brasa);font-size:15px;list-style:none;display:inline-flex;align-items:center;gap:6px;padding:4px 0}
+details.finas summary::-webkit-details-marker{display:none}
+details.finas summary::after{content:"▾";transition:transform .2s}
+details.finas[open] summary::after{transform:rotate(180deg)}
+.grupo{margin-top:12px}
+.grupo > span{display:block;font-weight:700;font-size:13.5px;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:2px solid var(--linha);background:var(--branco);border-radius:999px;padding:7px 13px;font-size:14.5px;font-weight:600;min-height:40px}
+.chip small{font-weight:500;color:var(--cinza)}
+.chip[aria-pressed="true"]{border-color:var(--carvao);background:var(--carvao);color:var(--papel)}
+.chip[aria-pressed="true"] small{color:#CFC3B5}
+.dica-p{font-size:13px;color:var(--cinza);margin:8px 0 0}
+
+/* comanda */
+.hero-dir{position:relative;background:#120d0a url(fotos/carne-na-brasa.jpg) center/cover no-repeat;padding:44px max(32px, calc((100vw - 1240px)/2 + 32px)) 48px 40px;display:flex;flex-direction:column;align-items:center}
+.hero-dir::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,13,10,.25),rgba(18,13,10,.05) 40%,rgba(18,13,10,.45))}
+.comanda-wrap{position:relative;width:100%;max-width:470px}
+.comanda{position:relative;background:var(--papel);border-radius:6px 6px 0 0;padding:22px 22px 30px;box-shadow:var(--sombra);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 12px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/24px 12px repeat-x;
+  mask:linear-gradient(#000 0 0) top/100% calc(100% - 12px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/24px 12px repeat-x}
+.comanda::after{content:"";position:absolute;left:0;right:0;bottom:0;height:12px;background:var(--brasa)}
+.cmd-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:2px dashed var(--linha);padding-bottom:12px}
+.cmd-cab b{font-family:var(--titulo);font-weight:800;font-size:22px;display:block;line-height:1.1}
+.cmd-cab span{font-size:13px;color:var(--cinza)}
+.cmd-cab .nro{font-family:var(--titulo);font-weight:700;font-size:13px;color:var(--cinza);white-space:nowrap}
+.voltou{display:none;margin:12px 0 0;background:var(--papel-2);border-radius:10px;padding:8px 12px;font-size:13.5px;align-items:center;justify-content:space-between;gap:10px}
+.voltou.on{display:flex}
+.voltou .link{font-size:13.5px;padding:0}
+.cmd-tot{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:end;padding:14px 0 12px;border-bottom:2px dashed var(--linha)}
+.cmd-tot .rot{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cinza)}
+.cmd-tot .pp{font-family:var(--titulo);font-weight:800;font-size:46px;line-height:1;color:var(--brasa)}
+.cmd-tot .pp small{font-size:16px;font-family:var(--texto);font-weight:600;color:var(--carvao)}
+.cmd-tot .tt{text-align:right}
+.cmd-tot .tt b{display:block;font-family:var(--titulo);font-weight:800;font-size:26px;line-height:1}
+.veredito{margin:12px 0 0;border-radius:10px;padding:10px 12px;font-size:14.5px;font-weight:600;line-height:1.35;display:flex;gap:10px;align-items:flex-start}
+.veredito i{font-style:normal;flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:13px;margin-top:1px}
+.veredito.sim{background:#E5F1E8;color:#1D4D2E}.veredito.sim i{background:var(--verde)}
+.veredito.troca{background:#FBEBD9;color:#6B2A07}.veredito.troca i{background:var(--brasa)}
+.veredito.nao{background:#FBE4E1;color:#7A1A12}.veredito.nao i{background:var(--vermelho)}
+.saidas{display:grid;gap:8px;margin-top:8px}
+.saidas:empty{display:none}
+.saida{display:flex;align-items:center;text-align:left;border:2px solid var(--brasa);background:var(--branco);border-radius:12px;padding:10px 12px;min-height:52px;font-size:14.5px;font-weight:600;color:var(--carvao)}
+.saida small{font-weight:500;color:var(--cinza)}
+.saida b{color:var(--brasa)}
+.saida:hover{background:#FBEBD9}
+.ligados{display:flex;flex-wrap:wrap;gap:6px}
+.ligado{border:0;background:var(--papel-2);border-radius:999px;padding:7px 12px;font-size:13.5px;font-weight:600;min-height:36px}
+.ligado span{color:var(--brasa);margin-left:4px;font-weight:800}
+.veredito.sem{background:var(--papel-2);color:var(--cinza);font-weight:500}.veredito.sem i{background:var(--cinza)}
+.regra{margin:6px 0 0;font-size:12.5px;color:var(--cinza)}
+.cmd-linhas h4{margin:14px 0 4px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brasa)}
+.l{display:grid;grid-template-columns:minmax(0,1fr) auto 76px;gap:10px;padding:3px 0;font-size:14.5px;align-items:baseline}
+.l .q{color:var(--cinza);white-space:nowrap;font-variant-numeric:tabular-nums}
+.l .v{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.l .n small{color:var(--cinza)}
+.carimbo{display:block;margin:16px auto 0;width:max-content;transform:rotate(-3deg);border:3px solid var(--mostarda);color:#8A5E00;background:rgba(242,180,48,.12);border-radius:10px;padding:6px 10px;font-family:var(--titulo);font-weight:800;font-size:13px;line-height:1.15;max-width:190px;text-align:center;pointer-events:none}
+.cmd-pe{margin-top:14px;padding-top:10px;border-top:2px dashed var(--linha);font-size:12.5px;color:var(--cinza);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.cmd-pe .link{font-size:13px;padding:0}
+
+/* mandar */
+.mandar{position:relative;width:100%;max-width:470px;margin-top:18px;background:var(--branco);border-radius:var(--raio);padding:18px;box-shadow:var(--sombra)}
+.mandar h3{font-size:20px;margin-bottom:10px}
+.campos2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.campos2 label{font-size:13px;font-weight:600;display:block}
+.campos2 .largo{grid-column:1/-1}
+.campos2 input{width:100%;margin-top:4px;border:2px solid var(--linha);border-radius:10px;padding:10px 12px;font-size:15px;background:var(--papel)}
+.campos2 input:focus{outline:0;border-color:var(--carvao)}
+.priv{font-size:12px;color:var(--cinza);margin:6px 0 12px}
+.bts2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px}
+.bts2 .bt{white-space:nowrap;padding:12px 10px;font-size:15.5px}
+.sem-pix{margin:8px 0 0;font-size:13px;color:var(--cinza)}
+.sem-pix.off{display:none}
+.mais-acoes{display:flex;justify-content:space-between;gap:12px;margin-top:10px;flex-wrap:wrap}
+
+/* barra fixa */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--carvao);color:var(--papel);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:flex;align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform .25s}
+.barra.on{transform:none}
+.barra .bx b{font-family:var(--titulo);font-weight:800;font-size:24px;line-height:1;display:block}
+.barra .bx span{font-size:13px;color:#D8CCBE}
+.barra .bt{min-height:44px;padding:10px 16px;font-size:15px}
+
+/* seções */
+section.sec{padding:88px 0}
+.cab-sec{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:36px}
+.cab-sec p{margin:0;max-width:440px;color:var(--cinza)}
+
+/* como funciona */
+.como{background:var(--papel-2)}
+.tres{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tres > div{background:var(--branco);border-radius:var(--raio);padding:24px;border:2px solid var(--linha)}
+.tres .n{font-family:var(--titulo);font-weight:800;font-size:56px;line-height:.9;color:var(--brasa)}
+.tres h3{font-size:22px;margin:8px 0 6px}
+.tres p{margin:0;color:var(--cinza)}
+
+/* fogo */
+.fogo{background:var(--papel)}
+.abas{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.aba{border:2px solid var(--carvao);background:transparent;border-radius:999px;padding:10px 18px;font-weight:700;font-size:15px;min-height:46px}
+.aba[aria-selected="true"]{background:var(--carvao);color:var(--papel)}
+.fogo-grade{display:grid;grid-template-columns:400px minmax(0,1fr);gap:40px;align-items:start}
+.ordem{background:var(--carvao);color:var(--papel);border-radius:var(--raio);padding:24px;position:relative;overflow:hidden}
+.ordem h3{font-size:26px;margin-bottom:4px}
+.ordem > p{color:#CFC3B5;margin:0 0 14px;font-size:14.5px}
+.aviso-c{background:#4A2A1C;border-left:4px solid var(--brasa-clara);border-radius:8px;padding:10px 12px;margin:0 0 12px;font-size:14.5px;font-weight:600}
+.aviso-c a{color:var(--brasa-clara);white-space:nowrap}
+.ordem ol{list-style:none;margin:0;padding:0;position:relative}
+.ordem ol::before{content:"";position:absolute;left:17px;top:10px;bottom:10px;width:2px;background:#4A3E37}
+.ordem li{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:9px 0;position:relative}
+.ordem li .b{width:36px;height:36px;border-radius:50%;background:var(--brasa);display:grid;place-items:center;font-family:var(--titulo);font-weight:800;font-size:15px;z-index:1}
+.ordem li.pre .b{background:#4A3E37}
+.ordem li b{display:block;font-size:16px}
+.ordem li span{font-size:14px;color:#CFC3B5}
+.ordem li em{font-style:normal;color:var(--brasa-clara);font-weight:600}
+.tabela{width:100%;border-collapse:collapse;font-size:15.5px}
+.tabela th{text-align:left;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);padding:10px 12px;border-bottom:2px solid var(--carvao)}
+.tabela td{padding:12px;border-bottom:1px solid var(--linha);vertical-align:top}
+.tabela td:first-child{font-weight:700}
+.tabela td.t{white-space:nowrap;font-variant-numeric:tabular-nums;font-weight:600}
+.tabela tr.na td{color:var(--cinza)}
+.prep-intro{margin:0 0 12px;color:var(--cinza)}
+.pontos{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px}
+.pontos span{background:var(--papel-2);border-radius:999px;padding:6px 12px;font-size:13.5px}
+.pontos b{font-variant-numeric:tabular-nums}
+
+/* cortes */
+.cortes{background:var(--carvao);color:var(--papel)}
+.cortes .cab-sec p{color:#CFC3B5}
+.grade-c{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.corte{background:var(--carvao-2);border-radius:var(--raio);overflow:hidden;display:flex;flex-direction:column}
+.corte .foto{aspect-ratio:16/10;background:#000 center/cover no-repeat}
+.corte .corpo{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.corte .l1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.corte h3{font-size:26px}
+.corte .preco{background:none;border:0;padding:0;border-bottom:2px dotted #6B5B50;font-family:var(--titulo);font-weight:800;font-size:22px;color:var(--brasa-clara);white-space:nowrap}
+.corte .preco small{font-family:var(--texto);font-size:13px;font-weight:500;color:#CFC3B5}
+.corte .fonte{font-size:12px;color:#A99B8E}
+.corte p{margin:0;color:#DCD0C3;font-size:15px}
+.corte .usar{margin-top:auto;align-self:flex-start;border:2px solid var(--papel);background:transparent;color:var(--papel);border-radius:10px;padding:9px 14px;font-weight:700;font-size:14px;min-height:44px}
+.corte .usar[aria-pressed="true"]{background:var(--papel);color:var(--carvao)}
+
+/* turma */
+.turma{position:relative;color:#fff;padding:96px 0;background:#1a120d;overflow:hidden}
+.turma::before{content:"";position:absolute;inset:0;background-image:url(fotos/turma-na-parrilla.jpg),url(fotos/mesa-posta-no-quintal.jpg);background-size:cover;background-position:center}
+.turma::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,14,10,.88),rgba(20,14,10,.25))}
+.turma .wrap{position:relative;z-index:1}
+.turma h2{font-size:clamp(38px,5vw,68px);max-width:680px}
+.turma p{max-width:500px;font-size:18px;color:#F1E7DA}
+
+/* perguntas */
+.perg{background:var(--papel-2)}
+.perg-grade{display:grid;grid-template-columns:340px minmax(0,1fr);gap:48px}
+.perg-grade aside p{color:var(--cinza)}
+details.q{background:var(--branco);border-radius:14px;margin-bottom:10px;border:2px solid var(--linha)}
+details.q summary{list-style:none;cursor:pointer;padding:18px 54px 18px 20px;font-weight:700;font-size:17px;position:relative}
+details.q summary::-webkit-details-marker{display:none}
+details.q summary::after{content:"+";position:absolute;right:16px;top:50%;transform:translateY(-50%);width:30px;height:30px;border-radius:50%;background:var(--brasa);color:#fff;display:grid;place-items:center;font-size:20px;line-height:1}
+details.q[open] summary::after{content:"–"}
+details.q > div{padding:0 20px 18px;color:#3D3530}
+details.q > div p{margin:0 0 8px}
+
+/* rodapé */
+footer{background:var(--carvao);color:#CFC3B5;padding:60px 0 calc(90px + env(safe-area-inset-bottom));font-size:14.5px}
+.rod{display:grid;grid-template-columns:1fr 1.5fr;gap:48px}
+footer .logo-svg{width:200px}
+footer h4{color:var(--papel);font-family:var(--titulo);font-size:20px;margin:0 0 10px}
+footer a{color:var(--brasa-clara)}
+.fontes{width:100%;border-collapse:collapse;font-size:13.5px}
+.fontes td{padding:6px 8px 6px 0;border-bottom:1px solid #3A302A;vertical-align:top}
+.fontes td.v{white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums;color:var(--papel)}
+.rod-baixo{margin-top:40px;padding-top:18px;border-top:1px solid #3A302A;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px}
+.moder{color:var(--papel);font-weight:700}
+
+/* janelas */
+.jan{position:fixed;inset:0;z-index:60;background:rgba(20,14,10,.72);display:none;align-items:center;justify-content:center;padding:16px}
+.jan.on{display:flex}
+.jan-caixa{background:var(--papel);border-radius:var(--raio);width:100%;max-width:560px;max-height:calc(100vh - 32px);display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--sombra)}
+.jan-cab{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;border-bottom:2px solid var(--linha)}
+.jan-cab h3{font-size:22px}
+.fechar{border:0;background:var(--papel-2);width:44px;height:44px;border-radius:50%;font-size:22px;flex:none}
+.jan-corpo{padding:14px 18px;overflow:auto}
+.jan-pe{padding:14px 18px;border-top:2px solid var(--linha);display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.previa{display:block;width:100%;max-width:360px;margin:0 auto;border-radius:10px;box-shadow:0 10px 30px -10px rgba(0,0,0,.4)}
+.aviso-img{text-align:center;font-weight:700;margin:12px 0 0;display:none}
+.aviso-img.on{display:block}
+.preco-l{display:grid;grid-template-columns:1fr 112px;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--linha);font-size:15px}
+.preco-l small{display:block;color:var(--cinza);font-size:12px}
+.preco-l input{width:100%;border:2px solid var(--linha);border-radius:10px;padding:9px 10px;text-align:right;font-variant-numeric:tabular-nums;background:var(--branco)}
+
+/* modo mercado */
+.mercado{position:fixed;inset:0;z-index:70;background:var(--papel);display:none;flex-direction:column}
+.mercado.on{display:flex}
+.merc-cab{background:var(--carvao);color:var(--papel);padding:14px 16px calc(14px);display:flex;justify-content:space-between;align-items:center;gap:12px}
+.merc-cab b{font-family:var(--titulo);font-size:22px;display:block;line-height:1.1}
+.merc-cab span{font-size:13.5px;color:#D8CCBE}
+.merc-cab .fechar{background:var(--carvao-2);color:var(--papel)}
+.merc-barra{height:6px;background:#3A302A}
+.merc-barra i{display:block;height:100%;background:var(--brasa);width:0;transition:width .2s}
+.merc-lista{flex:1;overflow:auto;padding:6px 16px 24px;max-width:640px;width:100%;margin:0 auto}
+.merc-lista h4{margin:18px 0 6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brasa)}
+.mi{display:flex;align-items:center;gap:14px;min-height:64px;padding:10px 12px;margin-bottom:8px;background:var(--branco);border:2px solid var(--linha);border-radius:14px;cursor:pointer;user-select:none}
+.mi input{position:absolute;opacity:0;pointer-events:none}
+.mi .cx{flex:none;width:32px;height:32px;border-radius:9px;border:2.5px solid var(--carvao);display:grid;place-items:center;background:#fff}
+.mi .cx svg{width:20px;height:20px;opacity:0}
+.mi .tx{flex:1;min-width:0}
+.mi .tx b{display:block;font-size:15px;line-height:1.2;font-weight:600}
+.mi .tx small{display:block;font-size:13px;color:var(--cinza)}
+.mi .qq{display:block;font-family:var(--titulo);font-weight:800;font-size:22px;line-height:1.15;color:var(--carvao);margin:2px 0 1px}
+.mi.ok{background:var(--papel-2);border-color:var(--papel-2)}
+.mi.ok .cx{background:var(--verde);border-color:var(--verde)}
+.mi.ok .cx svg{opacity:1}
+.mi.ok .tx b,.mi.ok .qq{text-decoration:line-through;color:var(--cinza)}
+.mi input:focus-visible + .cx{box-shadow:0 0 0 3px rgba(194,65,12,.4)}
+.merc-pe{padding:12px 16px calc(12px + env(safe-area-inset-bottom));border-top:2px solid var(--linha);display:flex;justify-content:space-between;align-items:center;gap:12px;max-width:640px;width:100%;margin:0 auto}
+.toast{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom));z-index:95;transform:translate(-50%,30px);opacity:0;background:var(--carvao);color:var(--papel);padding:12px 18px;border-radius:999px;font-weight:700;transition:.25s;z-index:90;pointer-events:none;white-space:nowrap}
+.toast.on{transform:translate(-50%,0);opacity:1}
+
+/* cadastro antes de levar a conta, privacidade e painel do dono */
+[hidden]{display:none!important}
+.bt:disabled{opacity:.45;cursor:default}
+.jan-p{z-index:80}
+#jan-priv{z-index:85}
+.jan-p .jan-caixa{max-width:460px;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);outline:none}
+.jan-p .jan-cab{align-items:flex-start}
+.jan-p .jan-cab .olho{margin:0 0 4px;font-size:12px}
+.cad-frase{margin:0 0 14px;color:var(--cinza);font-size:15px;line-height:1.45}
+.cad-l{display:block;font-weight:700;font-size:14px;margin:0 0 4px}
+.cad-l small{font-weight:500;color:var(--cinza);font-size:12.5px}
+.cad-i{display:block;width:100%;border:2px solid var(--linha);border-radius:10px;padding:11px 12px;font-size:16px;background:var(--branco);margin:0 0 12px}
+.cad-i:focus{outline:0;border-color:var(--carvao);box-shadow:0 0 0 3px var(--papel-3);box-shadow:0 0 0 3px color-mix(in srgb, var(--brasa) 25%, transparent)}
+.cad-i[aria-invalid="true"]{border-color:var(--vermelho)}
+.cad-erro{margin:-6px 0 12px;color:var(--vermelho);font-size:13.5px;font-weight:600}
+.cad-erro:empty{display:none}
+.cad-cx{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;line-height:1.35;cursor:pointer;padding:2px 0}
+.cad-cx input{flex:none;width:22px;height:22px;margin:0;accent-color:var(--brasa)}
+.jan-pe.cad-pe{flex-direction:column;align-items:stretch;gap:8px}
+.cad-pe .bt{width:100%}
+.cad-nota{margin:0;font-size:13px;color:var(--cinza);text-align:center}
+.cad-nota .link{font-size:13px;padding:2px 0}
+.cad-ok{margin:8px 0 0;font-size:12.5px;color:var(--cinza)}
+.cad-ok .link{font-size:12.5px;padding:2px 0}
+.priv-corpo h4{font-family:var(--titulo);font-size:16px;margin:14px 0 2px}
+.priv-corpo h4:first-child{margin-top:0}
+.priv-corpo p{margin:0 0 6px;font-size:14.5px;color:var(--carvao-2)}
+.priv-corpo .link{font-size:14.5px;padding:0}
+.priv-teste{margin-top:14px!important;background:var(--papel-2);border-left:4px solid var(--mostarda);border-radius:8px;padding:10px 12px;font-size:13.5px!important}
+.jan-pe.priv-pe{justify-content:flex-end}
+.nw{white-space:nowrap}
+@media (max-width:380px){
+  .jan-p .jan-cab{padding:12px 14px}
+  .jan-p .jan-cab h3{font-size:20px}
+  .jan-p .jan-corpo,.jan-p .jan-pe{padding:12px 14px}
+  .cad-frase{font-size:14px;margin-bottom:10px}
+  .cad-i{padding:9px 12px;margin-bottom:10px}
+}
+@media (max-height:620px){
+  .jan-p{padding:10px}
+  .jan-p .jan-caixa{max-height:calc(100vh - 20px);max-height:calc(100dvh - 20px)}
+}
+.link-rod{background:none;border:0;padding:0;color:var(--brasa-clara);text-decoration:underline;text-underline-offset:3px;font:inherit;cursor:pointer}
+.painel{background:var(--papel)}
+.painel-caixa{background:var(--branco);border:2px solid var(--carvao);border-radius:var(--raio);box-shadow:6px 6px 0 var(--carvao);padding:22px}
+.painel-nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.painel-nums div{background:var(--papel);border-radius:12px;padding:12px 14px}
+.painel-nums b{display:block;font-family:var(--titulo);font-weight:800;font-size:40px;line-height:1;color:var(--brasa)}
+.painel-nums span{font-size:13.5px;font-weight:600;color:var(--cinza)}
+.painel-acoes{display:flex;align-items:center;gap:8px 16px;flex-wrap:wrap;margin:18px 0 4px}
+.painel-msg{font-size:13.5px;font-weight:600;color:var(--verde)}
+.painel-texto{width:100%;min-height:110px;margin-top:8px;border:2px solid var(--linha);border-radius:10px;padding:10px;font:13px/1.4 ui-monospace,Consolas,monospace;background:var(--papel)}
+.painel-vazio{margin:14px 0 0;color:var(--cinza)}
+.leads{width:100%;border-collapse:collapse;font-size:15px;margin-top:10px}
+.leads th{text-align:left;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--cinza);padding:10px 12px;border-bottom:2px solid var(--carvao)}
+.leads td{padding:10px 12px;border-bottom:1px solid var(--linha);vertical-align:top;overflow-wrap:anywhere}
+.leads td:first-child{font-weight:700}
+.leads .sem{font-weight:500;color:var(--cinza)}
+@media (max-width:720px){
+  .painel-caixa{padding:16px 14px;box-shadow:4px 4px 0 var(--carvao)}
+  .painel-nums{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .painel-nums b{font-size:32px}
+  .leads thead{display:none}
+  .leads tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--linha)}
+  .leads td{padding:0;border:0}
+  .leads td:nth-child(2){grid-column:1/-1;order:3}
+  .leads td:nth-child(3){grid-column:1/-1;order:4;font-size:13.5px;color:var(--cinza)}
+  .leads td:nth-child(3)::before{content:"Ofertas: "}
+  .leads td:nth-child(4){text-align:right;font-size:13.5px;color:var(--cinza)}
+}
+
+/* tablet */
+@media (max-width:1060px){
+  .hero{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  .hero > *{min-width:0}
+  .hero-esq,.hero-dir,.hero-mandar{grid-column:1;grid-row:auto}
+  .hero-mandar{padding:24px 32px 8px}
+  .hero-esq{padding:32px 32px 28px}
+  .hero-dir{padding:36px 32px 40px}
+  .fogo-grade{grid-template-columns:1fr}
+  .grade-c{grid-template-columns:repeat(2,1fr)}
+  .perg-grade{grid-template-columns:1fr;gap:20px}
+  .rod{grid-template-columns:1fr}
+}
+/* celular */
+@media (max-width:720px){
+  body{font-size:16px}
+  .wrap{padding:0 16px}
+  .topo .wrap{height:54px}
+  .topo .logo-svg{width:150px}
+  .nav a:not(.nav-merc){display:none}
+  .nav .nav-merc{font-size:14px}
+  .hero-esq{padding:0 0 18px}
+  .hero-topo{position:relative;padding:20px 16px 18px;background:#140e0b url(fotos/turma-na-parrilla.jpg) 30% 30%/cover;color:#fff}
+  .hero-topo::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,14,10,.35),rgba(20,14,10,.75))}
+  .hero-topo > *{position:relative}
+  .hero h1{font-size:30px;color:#fff}
+  .hero h1 em{color:var(--brasa-clara)}
+  .hero .sub{font-size:15px;margin-top:6px;color:#F1E7DA}
+  .hero .sub .longo{display:none}
+  .calc{margin:-2px 16px 0;padding:14px 12px;border-radius:0 0 var(--raio) var(--raio);box-shadow:4px 4px 0 var(--carvao);border-top:0}
+  .passos{gap:6px}
+  .stp{padding:8px 4px 6px}
+  .stp label{font-size:13px}
+  .stp label small{font-size:12px}
+  .stp button{width:34px;height:34px;font-size:19px}
+  .stp input{width:36px;font-size:24px}
+  .vaq{grid-template-columns:1fr 132px;padding:8px 10px;margin-top:8px}
+  .vaq label{font-size:13.5px}
+  .vaq label small{font-size:12px}
+  .campo-r{height:44px}
+  .campo-r input{font-size:20px}
+  details.finas{margin-top:8px}
+  .hero-dir{padding:22px 16px 28px;background-image:url(fotos/brasa-viva.jpg)}
+  .comanda{padding:18px 14px 28px}
+  .cmd-tot .pp{font-size:40px}
+  .l{grid-template-columns:minmax(0,1fr) auto 68px;gap:8px;font-size:14px}
+  .mandar{padding:16px 14px}
+  .hero-mandar{padding:20px 16px 0}
+  .bts2 .bt{font-size:15px;padding:12px 8px;gap:6px}
+  .bts2 .bt svg{width:18px;height:18px}
+  .bts2{gap:8px}
+  .campos2{grid-template-columns:1fr}
+  section.sec{padding:60px 0}
+  .cab-sec{flex-direction:column;align-items:flex-start;gap:10px;margin-bottom:24px}
+  .tres{grid-template-columns:1fr;gap:10px}
+  .tres > div{display:grid;grid-template-columns:44px 1fr;gap:0 12px;padding:16px}
+  .tres .n{font-size:44px;grid-row:span 2}
+  .tres h3{font-size:19px;margin:2px 0 2px}
+  .tres p{font-size:14.5px}
+  .grade-c{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -16px;padding:0 16px 6px;scrollbar-width:none}
+  .grade-c::-webkit-scrollbar{display:none}
+  .corte{flex:0 0 80%;scroll-snap-align:start}
+  .arraste{display:block!important}
+  .tabela thead{display:none}
+  .tabela tr{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 0;border-bottom:1px solid var(--linha)}
+  .tabela td{padding:0;border:0}
+  .tabela td:nth-child(2){grid-column:1/-1;order:3;color:var(--cinza);font-size:14px}
+  .tabela td:nth-child(3){text-align:right}
+  .tabela td:nth-child(4){grid-column:1/-1;order:4;font-size:14px;color:var(--brasa);font-weight:600}
+  .turma{padding:64px 0}
+  .turma::before{background-position:62% center}
+  .ordem{padding:20px 16px}
+  details.q summary{font-size:16px;padding:16px 50px 16px 16px}
+  details.q > div{padding:0 16px 16px}
+}
+/* telas estreitas: 320 a 380 px */
+@media (max-width:380px){
+  .calc{margin-left:12px;margin-right:12px;padding:12px 10px}
+  .hero-topo{padding:16px 12px 14px}
+  .hero h1{font-size:27px}
+  .hero-topo .olho{display:none}
+  .vaq label small{font-size:12px}
+  .passos{grid-template-columns:minmax(0,1fr);gap:6px}
+  .stp{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 6px 6px 12px;text-align:left}
+  .stp label{min-width:0}
+  .stp .ctl{margin-top:0;flex:none;gap:2px}
+  .stp button{width:40px;height:40px;font-size:20px}
+  .stp input{width:40px;font-size:24px}
+  .vaq{grid-template-columns:minmax(0,1fr) 116px;gap:8px}
+  .hero-dir{padding-left:12px;padding-right:12px}
+  .hero-mandar{padding-left:12px;padding-right:12px}
+  .comanda{padding:16px 12px 26px}
+  .cmd-tot .pp{font-size:36px}
+  .cmd-tot .tt b{font-size:22px}
+  .l{grid-template-columns:minmax(0,1fr) auto 64px;gap:6px;font-size:13.5px}
+  .l .q{white-space:normal;text-align:right}
+  .bts2{grid-template-columns:minmax(0,1fr)}
+  .mandar{padding:14px 12px}
+  .barra{padding-left:12px;padding-right:12px;gap:8px}
+  .barra .bx{min-width:0}
+  .barra .bx b{font-size:22px}
+  .barra .bx span{font-size:12px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .barra .bt{padding:10px 12px;font-size:14px;flex:none}
+  .topo .logo-svg{width:132px}
+  .merc-lista{padding-left:12px;padding-right:12px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.barra,.toast{transition:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 1200 258">
+    <g transform="translate(23.21 33.55) scale(0.4768)"><path style="fill:var(--la)" fill-rule="evenodd" d="M52 38Q52 26 64 26H336Q348 26 348 38V252L300 292L252 254L200 296L148 256L100 288L52 254ZM104 72H288Q300 72 300 84V108Q300 120 288 120H104Q92 120 92 108V84Q92 72 104 72ZM104 156H200Q212 156 212 168V192Q212 204 200 204H104Q92 204 92 192V168Q92 156 104 156Z"/><path style="fill:var(--lb)" d="M348 274L300 314L252 276L200 318L148 278L100 310L52 276L52 324L100 358L148 326L200 366L252 324L300 362L348 322Z"/></g>
+    <g transform="translate(248.46 101.46) scale(0.9571)" fill="none" style="stroke:var(--la)" stroke-width="23" stroke-linecap="round" stroke-linejoin="round"><path d="M0 -46V58Q0 76 18 76"/><path transform="translate(52 0)" d="M0 4V76"/><path transform="translate(90 0)" d="M48 10C43 3 35 0 25 0C11 0 2 7 2 19C2 31 12 35 25 38C40 41 50 47 50 58C50 70 40 76 25 76C13 76 4 72 0 64"/><path transform="translate(174 0)" d="M12 -32V56Q12 76 32 76M-2 2H34"/><path transform="translate(238 0)" d="M54 4V76M54 38C54 16 42 0 27 0C12 0 0 16 0 38C0 60 12 76 27 76C42 76 54 60 54 38"/><path transform="translate(350 0)" d="M54 -46V76M54 38C54 16 42 0 27 0C12 0 0 16 0 38C0 60 12 76 27 76C42 76 54 60 54 38"/><path transform="translate(440 0)" d="M54 4V76M54 38C54 16 42 0 27 0C12 0 0 16 0 38C0 60 12 76 27 76C42 76 54 60 54 38"/><path transform="translate(552 0)" d="M0 -46V76M0 38C0 16 12 0 27 0C42 0 54 16 54 38C54 60 42 76 27 76C12 76 0 60 0 38"/><path transform="translate(644 0)" d="M0 4V76M0 34C0 12 12 0 28 0C34 0 38 2 42 5"/><path transform="translate(714 0)" d="M54 4V76M54 38C54 16 42 0 27 0C12 0 0 16 0 38C0 60 12 76 27 76C42 76 54 60 54 38"/><path transform="translate(804 0)" d="M48 10C43 3 35 0 25 0C11 0 2 7 2 19C2 31 12 35 25 38C40 41 50 47 50 58C50 70 40 76 25 76C13 76 4 72 0 64"/><path transform="translate(890 0)" d="M54 4V76M54 38C54 16 42 0 27 0C12 0 0 16 0 38C0 60 12 76 27 76C42 76 54 60 54 38"/><circle cx="52" cy="-38" r="13.5" style="fill:var(--la)" stroke="none"/></g>
+  </symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4.1-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 2.9 4.6 4.1 1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></symbol>
+  <symbol id="i-img" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 4h2l2.2 10.2a1.5 1.5 0 0 0 1.5 1.2h8.6a1.5 1.5 0 0 0 1.5-1.1L21 8H6.2"/><circle cx="9.5" cy="19.5" r="1.4" fill="currentColor"/><circle cx="17" cy="19.5" r="1.4" fill="currentColor"/></symbol>
+  <symbol id="i-ok" viewBox="0 0 24 24"><path fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-copia" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 8h10a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Zm-4 8H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v1"/></symbol>
+</svg>
+
+<header class="topo">
+  <div class="wrap">
+    <a href="#inicio" aria-label="Lista da Brasa, início"><svg class="logo-svg" viewBox="0 0 1200 258" role="img" aria-label="Lista da Brasa"><use href="#logo"/></svg></a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#fogo">Na hora do fogo</a>
+      <a href="#cortes">Cortes e preços</a>
+      <a href="#perguntas">Perguntas</a>
+      <a href="#" class="nav-merc" data-abre-mercado><svg class="ic-cart" aria-hidden="true"><use href="#i-cart"/></svg>Modo mercado</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+<section class="hero" aria-label="Calculadora do churrasco">
+  <div class="hero-esq">
+    <div class="hero-topo">
+      <p class="olho" style="color:var(--brasa-clara)">Calculadora de churrasco</p>
+      <h1>Quanto comprar <em>pro churrasco?</em></h1>
+      <p class="sub">Diz quantos vêm. A gente faz a conta.<span class="longo"> Carne, bebida, carvão, o preço de tudo e quanto cada um põe na vaquinha.</span></p>
+    </div>
+
+    <div class="calc" role="group" aria-label="Quem vem e quanto a turma tem">
+      <div class="passos">
+        <div class="stp" data-campo="adultos"><label for="adultos">Adultos <small>dividem a conta</small></label>
+          <div class="ctl"><button type="button" data-d="-1" aria-label="Menos um adulto">−</button><input id="adultos" type="number" inputmode="numeric" min="0" max="200" value="10"><button type="button" data-d="1" aria-label="Mais um adulto">+</button></div></div>
+        <div class="stp" data-campo="criancas"><label for="criancas">Crianças <small>comem metade</small></label>
+          <div class="ctl"><button type="button" data-d="-1" aria-label="Menos uma criança">−</button><input id="criancas" type="number" inputmode="numeric" min="0" max="100" value="2"><button type="button" data-d="1" aria-label="Mais uma criança">+</button></div></div>
+        <div class="stp" data-campo="bebem"><label for="bebem">Bebem cerveja <small>dos adultos</small></label>
+          <div class="ctl"><button type="button" data-d="-1" aria-label="Menos um que bebe cerveja">−</button><input id="bebem" type="number" inputmode="numeric" min="0" max="200" value="6"><button type="button" data-d="1" aria-label="Mais um que bebe cerveja">+</button></div></div>
+      </div>
+      <div class="vaq">
+        <label for="vaquinha">Quanto a turma tem? <small>Opcional. A gente ajusta o corte para caber.</small></label>
+        <div class="campo-r"><span>R$</span><input id="vaquinha" type="text" inputmode="numeric" placeholder="sem limite" value="600" aria-describedby="veredito"></div>
+      </div>
+      <details class="finas" id="finas">
+        <summary>Onde vai assar e corte do boi</summary>
+        <div class="grupo"><span>Onde vai assar</span>
+          <div class="chips" data-grupo="fogo">
+            <button type="button" class="chip" data-v="churrasqueira" aria-pressed="true">Churrasqueira</button>
+            <button type="button" class="chip" data-v="grelha" aria-pressed="false">Grelha</button>
+            <button type="button" class="chip" data-v="airfryer" aria-pressed="false">Airfryer</button>
+          </div></div>
+        <div class="grupo"><span>Corte do boi que você quer</span>
+          <div class="chips" data-grupo="boi" id="chips-boi"></div>
+          <p class="dica-p">Com a vaquinha preenchida, se não couber, a gente desce para um corte mais barato e avisa.</p></div>
+      </details>
+    </div>
+  </div>
+
+  <div class="hero-dir" id="lista">
+    <div class="comanda-wrap">
+      <div class="comanda" aria-live="polite">
+        <div class="cmd-cab">
+          <div><b id="cmd-nome">Churrasco da turma</b><span id="cmd-quem" class="num">…</span></div>
+          <span class="nro" id="cmd-data"></span>
+        </div>
+        <div class="voltou" id="voltou"><span id="voltou-tx">Da última vez</span><button type="button" class="link" id="zerar">Começar do zero</button></div>
+        <div class="cmd-tot" id="cmd-tot">
+          <span class="rot" id="pp-rot">Cada adulto põe</span><span class="rot" style="text-align:right">Total estimado</span>
+          <span class="pp num" id="pp">R$ 0</span><span class="tt num"><b id="total">R$ 0</b></span>
+        </div>
+        <div class="veredito sem" id="veredito"><i>i</i><span id="veredito-tx"></span></div>
+        <div class="saidas" id="saidas"></div>
+        <div class="cmd-linhas" id="linhas"></div>
+        <div class="carimbo" id="carimbo">Lista pronta. Ninguém sai com fome, nem quem chega por último.</div>
+        <div class="cmd-pe"><span id="pe-carne"></span><button type="button" class="link" id="abrir-precos">Preço diferente? Ajuste</button></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="hero-mandar">
+    <div class="mandar" id="mandar">
+      <h3>Mandar pra turma</h3>
+      <div class="campos2">
+        <label>Nome do churrasco <input id="nome" type="text" maxlength="40" placeholder="Ex.: Niver do Marcos" autocomplete="off"></label>
+        <label>Quando e onde (opcional) <input id="quando" type="text" maxlength="50" placeholder="Ex.: Sáb, 13h, casa do Marcos" autocomplete="off"></label>
+        <label class="largo">Chave Pix (opcional) <input id="pix" type="text" maxlength="60" placeholder="27 99999-0000 (Marcos) · até sexta" autocomplete="off"></label>
+      </div>
+      <p class="priv">A lista fica só neste aparelho. Nome, quando e Pix não ficam em lugar nenhum: somem quando você fecha a página.</p>
+      <div class="bts2">
+        <a class="bt" id="zap" href="https://wa.me/" target="_blank" rel="noopener"><svg><use href="#i-zap"/></svg>Mandar no grupo</a>
+        <button type="button" class="bt contorno" id="baixar"><svg><use href="#i-img"/></svg>Baixar a conta</button>
+      </div>
+      <p class="sem-pix" id="sem-pix">Sem a chave, a turma vai perguntar onde pagar.</p>
+      <div class="mais-acoes">
+        <button type="button" class="link" data-abre-mercado><svg class="ic-cart" aria-hidden="true"><use href="#i-cart"/></svg>Abrir modo mercado</button>
+        <button type="button" class="link" id="copiar">Copiar a lista</button>
+      </div>
+      <p class="cad-ok" id="cad-ok" hidden>Seu contato está guardado. <button type="button" class="link" data-apagar-cad>Quer apagar? Toque aqui</button></p>
+    </div>
+  </div>
+</section>
+
+<section class="turma">
+  <div class="wrap">
+    <h2>Manda a conta pronta<br>pra turma.</h2>
+    <p>Mande a lista no grupo antes que alguém pergunte «o que eu levo?». No sábado, é só acender.</p>
+    <a class="bt" href="#inicio">Fazer a minha lista</a>
+  </div>
+</section>
+
+<section class="sec como" id="como">
+  <div class="wrap">
+    <div class="cab-sec"><div><p class="olho">Como funciona</p><h2>Da véspera ao último espeto</h2></div>
+      <p>A conta é livre e sem senha. A lista fica guardada neste aparelho: volte amanhã e ela está aqui.</p></div>
+    <div class="tres">
+      <div><span class="n">1</span><h3>Conte a turma</h3><p>Adultos, crianças e quem bebe. Se quiser, diga quanto a turma tem em reais.</p></div>
+      <div><span class="n">2</span><h3>Mande e cobre</h3><p>Mensagem pronta para o grupo e a conta em imagem, com quanto cada um põe e o Pix.</p></div>
+      <div><span class="n">3</span><h3>Compre e asse</h3><p>No mercado, marque item por item. Na brasa, siga a ordem: ninguém espera com fome.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec fogo" id="fogo">
+  <div class="wrap">
+    <div class="cab-sec"><div><p class="olho">Na hora do fogo</p><h2>O que entra primeiro<br>e como fazer cada um</h2></div>
+      <p>A ordem e os tempos seguem a sua lista. Tempos para carne fora da geladeira há 20 minutos. Na dúvida, o termômetro manda.</p></div>
+    <div class="abas" role="tablist" aria-label="Onde vai assar">
+      <button class="aba" role="tab" data-aba="churrasqueira" aria-selected="true">Churrasqueira</button>
+      <button class="aba" role="tab" data-aba="grelha" aria-selected="false">Grelha</button>
+      <button class="aba" role="tab" data-aba="airfryer" aria-selected="false">Airfryer</button>
+    </div>
+    <div class="fogo-grade">
+      <div class="ordem"><h3>A ordem do fogo</h3><p id="ordem-sub">Do acender ao fatiar.</p><div class="aviso-c" id="aviso-costela" style="display:none"><span id="aviso-costela-tx"></span> <a href="#cortes">Ver os cortes</a></div><ol id="ordem"></ol></div>
+      <div>
+        <p class="prep-intro" id="prep-intro"></p>
+        <table class="tabela"><thead><tr><th>O quê</th><th>Como</th><th>Tempo</th><th>Fogo</th></tr></thead><tbody id="prep"></tbody></table>
+        <div class="pontos" aria-label="Ponto pela temperatura no meio da carne">
+          <span>Mal passada <b>50–52 °C</b></span><span>Ao ponto <b>55–60 °C</b></span><span>Bem passada <b>68 °C+</b></span><span>Frango <b>74 °C</b></span><span>Linguiça e porco <b>71 °C</b></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec cortes" id="cortes">
+  <div class="wrap">
+    <div class="cab-sec"><div><p class="olho" style="color:var(--brasa-clara)">Cortes pelo preço</p><h2>Quanto custa o quilo<br>e quando vale</h2></div>
+      <p>Os preços foram pesquisados no Paraná em out–nov/2026; no seu mercado muda. Toque no preço para ajustar. «Usar este» troca o boi da sua lista.</p></div>
+    <div class="grade-c" id="grade-c"></div>
+    <p class="arraste" style="display:none;color:#A99B8E;font-size:13px;margin:10px 0 0">Arraste para o lado para ver os outros cortes →</p>
+  </div>
+</section>
+
+
+<section class="sec perg" id="perguntas">
+  <div class="wrap perg-grade">
+    <aside><p class="olho">Perguntas da véspera</p><h2>Tira-dúvidas</h2><p>O que todo mundo pergunta no grupo na quinta à noite.</p></aside>
+    <div>
+      <details class="q" open><summary>Quanto de carne por pessoa?</summary><div>
+        <p><b>400 g de carne crua por adulto.</b> Criança conta metade: 200 g. Dividimos como um churrasqueiro faria: metade de boi, 20% de linguiça, 20% de frango e 10% de porco.</p>
+        <p>Se a turma come muito ou o churrasco vai até a noite, conte um adulto a mais a cada quatro.</p></div></details>
+      <details class="q"><summary>Quanto eu peço de cada um?</summary><div>
+        <p>O total dividido pelos adultos: criança não paga. Esse é o número grande da comanda. Arredonde para cima na hora de pedir: a sobra vira o gelo de última hora.</p></div></details>
+      <details class="q"><summary>E se o dinheiro não der?</summary><div>
+        <p>Preencha «Quanto a turma tem». Se não couber, a lista troca o corte do boi por um mais barato, um de cada vez, e diz qual trocou. Se nem a costela cabe, a comanda diz quanto falta e quanto sai se cada um levar a própria cerveja.</p></div></details>
+      <details class="q"><summary>Quanta bebida comprar?</summary><div>
+        <p>Cerca de 1,5 litro por pessoa. Quem bebe cerveja: 1,5 litro em latas de 350 ml (dá umas 4 ou 5 latas). Quem não bebe e as crianças: 1 litro de refrigerante e meio de água.</p></div></details>
+      <details class="q"><summary>Quanto carvão e quanto gelo?</summary><div>
+        <p>Carvão: 1 kg para cada kg de carne, mais 3 kg se tiver costela (fogo de horas). Gelo: um saco de 5 kg para cada 20 latas, mais um pouco para o refrigerante.</p></div></details>
+      <details class="q"><summary>Dá para fazer na airfryer para muita gente?</summary><div>
+        <p>Dá, em rodadas de uns 500 g. Escolha «Airfryer» em «Onde vai assar»: a ordem da grelha mostra quantas rodadas vão ser. Para mais de 6 pessoas, vale juntar duas airfryers.</p></div></details>
+      <details class="q"><summary>Gastei diferente no mercado. Como acerto?</summary><div>
+        <p>Toque em «Preço diferente? Ajuste» na comanda e ponha o preço da nota. A conta de cada um refaz na hora: é só mandar a imagem nova no grupo.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec painel" id="painel-dono" hidden aria-labelledby="t-painel">
+  <div class="wrap">
+    <div class="cab-sec"><div><p class="olho">Só você vê</p><h2 id="t-painel">Painel do dono</h2></div>
+      <p>Quem levou a conta deixou o contato aqui. Oferta, só para quem marcou «sim».</p></div>
+    <div class="painel-caixa">
+      <div class="painel-nums" id="painel-nums"></div>
+      <div class="painel-acoes"><button type="button" class="bt" id="copiar-contatos" disabled><svg aria-hidden="true"><use href="#i-copia"/></svg>Copiar os contatos</button><button type="button" class="link" id="painel-atualizar">Atualizar</button><span class="painel-msg" id="painel-msg" role="status"></span></div>
+      <textarea class="painel-texto" id="painel-texto" readonly hidden aria-label="Contatos para copiar"></textarea>
+      <div id="painel-lista"><p class="painel-vazio">Carregando…</p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="rod">
+      <div>
+        <svg class="logo-svg esc" viewBox="0 0 1200 258" role="img" aria-label="Lista da Brasa"><use href="#logo"/></svg>
+        <p style="max-width:320px;margin-top:14px">Diz quantos vêm. A gente faz a conta. Para quem chamou a turma e agora tem de resolver tudo.</p>
+        <p class="moder" style="margin-top:20px">Bebida alcoólica só para maiores de 18. Beba com moderação e, se beber, não dirija.</p>
+      </div>
+      <div id="numeros">
+        <h4>De onde vêm os números</h4>
+        <p style="margin:0 0 10px">Quantidades: 400 g de carne crua por adulto, criança metade; 1 pão de alho por adulto e meio por criança; 1 pacote de queijo coalho (7 espetos) para cada 8 pessoas; 1,5 litro de bebida por pessoa; gelo: 1 saco de 5 kg para cada 20 latas; 1 kg de carvão por kg de carne. Preços são referência, não promessa: mudam por cidade e por semana.</p>
+        <table class="fontes" id="tabela-fontes"></table>
+      </div>
+    </div>
+    <div class="rod-baixo"><span>© 2026 Lista da Brasa · Fotos: Unsplash e imagens feitas com IA</span><span>A conta é livre e sem senha. Sua lista fica só neste aparelho. · <button type="button" class="link-rod" data-abre-priv>Privacidade</button></span></div>
+  </div>
+</footer>
+
+<div class="barra" id="barra" aria-hidden="true">
+  <div class="bx"><b id="b-pp" class="num">R$ 0</b><span id="b-tx">por adulto</span></div>
+  <a class="bt" href="#lista" id="b-ver">Ver a lista</a>
+</div>
+
+<div class="jan" id="jan-img" role="dialog" aria-modal="true" aria-labelledby="t-img">
+  <div class="jan-caixa">
+    <div class="jan-cab"><h3 id="t-img">A conta em imagem</h3><button class="fechar" type="button" data-fecha aria-label="Fechar">×</button></div>
+    <div class="jan-corpo"><img class="previa" id="previa" alt="Prévia da conta do churrasco"><p class="aviso-img" id="aviso-img">Segure o dedo na imagem para salvar.</p></div>
+    <div class="jan-pe"><button class="bt contorno" type="button" data-fecha>Voltar</button><button class="bt" type="button" id="salvar-img"><svg><use href="#i-img"/></svg>Baixar a imagem</button></div>
+  </div>
+</div>
+
+<div class="jan" id="jan-precos" role="dialog" aria-modal="true" aria-labelledby="t-precos">
+  <div class="jan-caixa">
+    <div class="jan-cab"><h3 id="t-precos">Preços do seu mercado</h3><button class="fechar" type="button" data-fecha aria-label="Fechar">×</button></div>
+    <div class="jan-corpo"><p style="margin:0 0 6px;color:var(--cinza);font-size:14px">Troque o que estiver diferente. A conta refaz na hora e o preço fica guardado neste aparelho.</p><div id="precos"></div></div>
+    <div class="jan-pe"><button class="bt contorno" type="button" id="restaurar">Voltar aos preços de referência</button><button class="bt" type="button" data-fecha>Pronto</button></div>
+  </div>
+</div>
+
+<div class="mercado" id="mercado" role="dialog" aria-modal="true" aria-labelledby="t-merc">
+  <div class="merc-cab"><div><b id="t-merc">Modo mercado</b><span id="merc-cont">0 de 0 no carrinho</span></div><button class="fechar" type="button" id="fechar-merc" aria-label="Fechar o modo mercado">×</button></div>
+  <div class="merc-barra"><i id="merc-prog"></i></div>
+  <div class="merc-lista" id="merc-lista"></div>
+  <div class="merc-pe"><button type="button" class="link" id="desmarcar">Desmarcar tudo</button><span id="merc-tot" class="num" style="font-weight:700"></span></div>
+</div>
+
+<div class="jan jan-p" id="jan-cad" role="dialog" aria-modal="true" aria-labelledby="t-cad" aria-describedby="cad-frase">
+  <div class="jan-caixa" tabindex="-1">
+    <div class="jan-cab"><div><p class="olho">Para levar a conta</p><h3 id="t-cad">Falta só o seu WhatsApp ou <span class="nw">e-mail</span></h3></div><button class="fechar" type="button" data-fecha-p aria-label="Fechar">×</button></div>
+    <div class="jan-corpo">
+      <p class="cad-frase" id="cad-frase">É grátis e sem senha. O seu contato fica com o dono do site, e ele só manda mensagem se você marcar a caixa abaixo.</p>
+      <div id="cad-campos">
+        <label class="cad-l" for="cad-nome">Seu nome <small>(opcional)</small></label>
+        <input class="cad-i" id="cad-nome" type="text" maxlength="60" autocomplete="name">
+        <label class="cad-l" for="cad-contato">WhatsApp ou e-mail <small>(o que preferir)</small></label>
+        <input class="cad-i" id="cad-contato" type="text" maxlength="120" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Celular com DDD ou e-mail" aria-required="true" aria-describedby="cad-erro">
+        <p class="cad-erro" id="cad-erro" role="alert"></p>
+        <label class="cad-cx"><input type="checkbox" id="cad-ofertas"><span>Quero receber ofertas de churrasco da minha região</span></label>
+      </div>
+    </div>
+    <div class="jan-pe cad-pe">
+      <button class="bt" type="button" id="cad-ir"><svg aria-hidden="true"><use href="#i-img"/></svg><span id="cad-ir-tx">Baixar a conta</span></button>
+      <a class="bt" id="cad-zap" href="https://wa.me/" target="_blank" rel="noopener" hidden><svg aria-hidden="true"><use href="#i-zap"/></svg>Mandar no WhatsApp</a>
+      <p class="cad-nota">Você apaga quando quiser. <button type="button" class="link" data-abre-priv>Privacidade</button></p>
+    </div>
+  </div>
+</div>
+
+<div class="jan jan-p" id="jan-priv" role="dialog" aria-modal="true" aria-labelledby="t-priv">
+  <div class="jan-caixa" tabindex="-1">
+    <div class="jan-cab"><h3 id="t-priv">Privacidade</h3><button class="fechar" type="button" data-fecha-p aria-label="Fechar">×</button></div>
+    <div class="jan-corpo priv-corpo">
+      <h4>O que a gente pede</h4>
+      <p>Nada. Fazer a conta, baixar a imagem, mandar no WhatsApp e copiar a lista são livres, sem cadastro e sem senha.</p>
+      <h4>O que fica guardado</h4>
+      <p>A conta e os preços que você mudou ficam só neste aparelho, no navegador, para você voltar depois. O nome do churrasco, o quando e o Pix não ficam em lugar nenhum: somem quando você fecha a página.</p>
+      <h4>Quem vê</h4>
+      <p>Só você. O site não tem banco de dados, não conta visitas e não usa cookie de anúncio. Ele fica no GitHub Pages, que registra o endereço IP de quem visita, por segurança. As letras vêm do Google Fonts.</p>
+      <h4>Como apagar</h4>
+      <p>«Começar do zero» limpa a conta. Para apagar tudo, inclusive os preços que você mudou, apague os dados deste site no navegador.</p>
+      <p id="priv-apagar" hidden></p>
+      <p class="priv-teste">Se um dia o site passar a guardar contato, este texto muda antes, com o nome de quem responde por ele.</p>
+    </div>
+    <div class="jan-pe priv-pe"><button class="bt" type="button" data-fecha-p>Voltar</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+// ===== entrega de arquivo (função do ambiente, sem mudanças) =====
+async function entregarArquivo(nome, blob) {
+  try {
+    if (window.claude && typeof window.claude.use === "function") {
+      const d = await window.claude.use("downloads");
+      if (d) { await d.save({ filename: nome, data: blob }); return "salvo"; }
+    }
+  } catch (e) { if (e && e.code === "declined") return "recusado"; }
+  try {
+    const arq = new File([blob], nome, { type: blob.type });
+    if (navigator.canShare && navigator.canShare({ files: [arq] })) { await navigator.share({ files: [arq] }); return "compartilhado"; }
+  } catch (e) { if (e && e.name === "AbortError") return "recusado"; }
+  if (!(window.claude && window.claude.use)) {
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = nome;
+    document.body.appendChild(a); a.click(); a.remove(); return "baixado";
+  }
+  return "mostrar";
+}
+
+// ===== preços de referência =====
+// T = Tribuna do Paraná, 01/10/2026: menores preços do Menor Preço (Nota Paraná), outubro de 2026.
+// E = estimativa da Lista da Brasa, novembro de 2026.
+const FONTE_T = {nome:'Tribuna do Paraná, a partir do Menor Preço (Nota Paraná)', mes:'out/2026', url:'https://www.tribunapr.com.br/receitas/quanto-custa-churrasco-4-pessoas-parana/'};
+const ITENS = {
+  picanha:   {nome:'Picanha', un:'kg', preco:75.00, f:'T'},
+  contrafile:{nome:'Contrafilé', un:'kg', preco:58.90, f:'E'},
+  alcatra:   {nome:'Alcatra', un:'kg', preco:52.90, f:'E'},
+  fraldinha: {nome:'Fraldinha', un:'kg', preco:47.90, f:'E'},
+  costela:   {nome:'Costela bovina', un:'kg', preco:29.90, f:'E'},
+  linguica:  {nome:'Linguiça toscana', un:'kg', preco:22.00, f:'T'},
+  sobrecoxa: {nome:'Sobrecoxa de frango', un:'kg', preco:18.00, f:'T'},
+  panceta:   {nome:'Panceta suína', un:'kg', preco:32.90, f:'E'},
+  paoalho:   {nome:'Pão de alho', un:'pacote com 5', preco:14.00, f:'T'},
+  coalho:    {nome:'Queijo coalho', un:'pacote com 7 espetos', preco:22.00, f:'T'},
+  farofa:    {nome:'Farofa pronta', un:'pacote 500 g', preco:7.50, f:'E'},
+  vinagrete: {nome:'Tomate e cebola (vinagrete)', un:'kg', preco:8.90, f:'E'},
+  sal:       {nome:'Sal grosso', un:'pacote 1 kg', preco:4.99, f:'E'},
+  cerveja:   {nome:'Cerveja', un:'lata 350 ml', preco:4.50, f:'T'},
+  refri:     {nome:'Refrigerante', un:'garrafa 2 L', preco:9.49, f:'E'},
+  agua:      {nome:'Água', un:'garrafa 1,5 L', preco:3.49, f:'E'},
+  gelo:      {nome:'Gelo', un:'saco 5 kg', preco:13.90, f:'E'},
+  carvao:    {nome:'Carvão', un:'saco 3 kg', preco:18.00, f:'T'}
+};
+const BOIS = ['picanha','contrafile','alcatra','fraldinha','costela'];
+const CHAVE = 'listadabrasa:v1';
+let preco = {}; Object.keys(ITENS).forEach(k => preco[k] = ITENS[k].preco);
+
+const estado = {adultos:10, criancas:2, bebem:6, vaquinha:600, fogo:'churrasqueira', boi:'picanha', levaCerveja:false, semExtras:false};
+let marcados = {};
+let quando = null;
+const priv = {nome:'', pix:'', quando:''}; // só na memória
+
+const ler = () => { try { return JSON.parse(localStorage.getItem(CHAVE) || 'null'); } catch(e){ return null; } };
+const gravar = () => { try { localStorage.setItem(CHAVE, JSON.stringify({estado, preco, marcados, quando: Date.now()})); } catch(e){} };
+
+const BRL = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'});
+const R = v => BRL.format(v);
+const R0 = v => 'R$ ' + Math.ceil(v - 0.001).toLocaleString('pt-BR');
+const r1 = v => Math.round(v * 10) / 10;
+const kg = v => v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1}) + ' kg';
+const pl = (n, s, p) => n.toLocaleString('pt-BR') + ' ' + (n === 1 ? s : p);
+const q1 = v => v < 0.1 ? 0 : Math.max(0.2, r1(v));
+
+// ===== a conta =====
+function montar(e, boi){
+  const A = e.adultos, C = e.criancas, B = Math.min(e.bebem, A), N = A + C;
+  const carne = A * 0.4 + C * 0.2;
+  const L = [];
+  const add = (cat, id, qtd, txt) => { if (qtd > 0) L.push({cat, id, qtd, txt, nome: ITENS[id].nome, custo: qtd * preco[id]}); };
+  // carnes: metade boi, 20% linguiça, 20% frango, 10% porco
+  [[boi,.5],['linguica',.2],['sobrecoxa',.2],['panceta',.1]].forEach(([id,p]) => { const q = q1(carne * p); add('Carnes', id, q, kg(q)); });
+  // bebidas: 1,5 L por pessoa
+  const latas = Math.ceil(B * 1.5 / 0.35 - 1e-9);
+  if (!e.levaCerveja) add('Bebidas', 'cerveja', latas, pl(latas,'lata','latas'));
+  const refri = Math.ceil((N - B) * 1.0 / 2 - 1e-9);
+  add('Bebidas', 'refri', refri, pl(refri,'garrafa','garrafas'));
+  const agua = N > 0 ? Math.max(1, Math.ceil((N - B) * 0.5 / 1.5 - 1e-9)) : 0;
+  add('Bebidas', 'agua', agua, pl(agua,'garrafa','garrafas'));
+  // acompanhamentos
+  if (N > 0){
+    const paes = Math.ceil(A + C * 0.5 - 1e-9), pac = Math.ceil(paes / 5);
+    if (!e.semExtras) add('Acompanhamentos', 'paoalho', pac, pl(pac,'pacote','pacotes') + ' (' + (pac*5) + ' un.)');
+    const co = Math.ceil(N / 8); if (!e.semExtras) add('Acompanhamentos', 'coalho', co, pl(co,'pacote','pacotes'));
+    const fa = Math.ceil(N / 10); add('Acompanhamentos', 'farofa', fa, pl(fa,'pacote','pacotes'));
+    const vi = Math.max(0.5, r1(N * 0.08)); add('Acompanhamentos', 'vinagrete', vi, kg(vi));
+  }
+  // fogo e gelo
+  if (N > 0){ const g = Math.max(1, Math.ceil((latas * 0.25 + refri * 0.5) / 5 - 1e-9)); add('Fogo e gelo', 'gelo', g, pl(g,'saco de 5 kg','sacos de 5 kg')); }
+  if (e.fogo === 'churrasqueira' && carne > 0){ const c = Math.ceil((carne + (boi === 'costela' ? 3 : 0)) / 3 - 1e-9); add('Fogo e gelo', 'carvao', c, pl(c,'saco de 3 kg','sacos de 3 kg')); }
+  if (carne > 0){ const s = Math.max(1, Math.ceil(carne / 8)); add('Fogo e gelo', 'sal', s, pl(s,'pacote','pacotes')); }
+  const ordem = ['Carnes','Bebidas','Acompanhamentos','Fogo e gelo'];
+  L.sort((a,b) => ordem.indexOf(a.cat) - ordem.indexOf(b.cat));
+  const soma = Math.round(L.reduce((s,l) => s + l.custo, 0) * 100) / 100;
+  const carneKg = r1(L.filter(l => l.cat === 'Carnes').reduce((s,l) => s + l.qtd, 0));
+  const cerveja = L.filter(l => l.id === 'cerveja').reduce((s,l) => s + l.custo, 0);
+  return {L, soma, carneKg, cerveja, latas, A, C, N, B, boi, pagantes: A || N};
+}
+function resolver(e){
+  const pref = e.boi, r = montar(e, pref);
+  if (!e.vaquinha || !r.N){ r.cabe = 'sem'; return r; }
+  if (r.soma <= e.vaquinha){ r.cabe = 'sim'; return r; }
+  const descer = BOIS.filter(b => preco[b] < preco[pref] && (b !== 'costela' || e.fogo === 'churrasqueira')).sort((a,b) => preco[b] - preco[a]);
+  for (const b of descer){ const t = montar(e, b); if (t.soma <= e.vaquinha){ t.cabe = 'troca'; t.de = pref; return t; } }
+  const ult = descer.length ? montar(e, descer[descer.length - 1]) : r;
+  ult.cabe = 'nao'; ult.de = pref; return ult;
+}
+
+// ===== desenho =====
+let atual = null;
+function desenhar(){
+  const c = atual = resolver(estado);
+  const quem = c.N ? `${pl(c.A,'adulto','adultos')}${c.C ? ' e ' + pl(c.C,'criança','crianças') : ''}` : 'Ninguém ainda';
+  document.getElementById('cmd-nome').textContent = priv.nome || 'Churrasco da turma';
+  document.getElementById('cmd-quem').textContent = (priv.quando ? priv.quando + ' · ' : '') + quem + (c.N ? ' · ' + {churrasqueira:'na churrasqueira', grelha:'na grelha', airfryer:'na airfryer'}[estado.fogo] : '');
+  document.getElementById('pp-rot').textContent = c.A ? 'Cada adulto põe' : 'Cada um põe';
+  const pp = c.pagantes ? c.soma / c.pagantes : 0;
+  document.getElementById('pp').textContent = R0(pp);
+  document.getElementById('total').textContent = R(c.soma);
+  // veredito
+  const v = document.getElementById('veredito'), vt = document.getElementById('veredito-tx');
+  const nomeDe = id => ITENS[id].nome.toLowerCase();
+  let ic = 'i';
+  if (!c.N){ v.className = 'veredito sem'; vt.textContent = 'Ponha quantos vêm para a conta aparecer.'; }
+  else if (c.cabe === 'sem'){ v.className = 'veredito sem'; vt.textContent = 'Sem limite de valor. Quer caber num valor? Diga quanto a turma tem.'; }
+  else if (c.cabe === 'sim'){ v.className = 'veredito sim'; ic = '✓'; vt.textContent = `Cabe nos ${R0(estado.vaquinha)} da turma. Sobram ${R(estado.vaquinha - c.soma)}.`; }
+  else if (c.cabe === 'troca'){ v.className = 'veredito troca'; ic = '↓'; vt.textContent = `Para caber nos ${R0(estado.vaquinha)}, trocamos ${nomeDe(c.de)} por ${nomeDe(c.boi)}. Sobram ${R(estado.vaquinha - c.soma)}.` + (c.boi === 'costela' ? ' A costela pede 4 a 6 horas de fogo.' : ''); }
+  else { v.className = 'veredito nao'; ic = '!'; const falta = c.soma - estado.vaquinha; const semC = c.soma - c.cerveja;
+    vt.textContent = `Não cabe nos ${R0(estado.vaquinha)}: faltam ${R(falta)}, mesmo com ${nomeDe(c.boi)}. Escolha uma saída:`; }
+  v.querySelector('i').textContent = ic;
+  // saídas quando não cabe + ajustes ligados
+  let sa = '';
+  if (c.N && c.cabe === 'nao'){
+    const op = [];
+    const teste = (mud) => resolver(Object.assign({}, estado, mud));
+    const res = t => t.cabe === 'sim' || t.cabe === 'troca' ? 'cabe' : 'ainda faltam ' + R0(t.soma - estado.vaquinha);
+    let t1 = null;
+    if (!estado.levaCerveja && c.cerveja > 0){ t1 = teste({levaCerveja:true}); op.push(['cerveja','Sem a cerveja (cada um leva a sua)', res(t1)]); }
+    const temExtras = !estado.semExtras && c.L.some(l => l.id === 'paoalho' || l.id === 'coalho');
+    if (temExtras && !(t1 && res(t1) === 'cabe')){ const t2 = teste({levaCerveja: estado.levaCerveja || c.cerveja > 0, semExtras:true});
+      op.push(['extras', (!estado.levaCerveja && c.cerveja > 0) ? 'Sem cerveja, queijo e pão de alho' : 'Sem queijo e pão de alho', res(t2)]); }
+    const cada = Math.ceil(c.soma / c.pagantes - 1e-9);
+    op.push(['pedir', `Pedir ${R0(cada)} de cada ${c.A ? 'adulto' : 'um'}`, 'cabe', cada]);
+    sa = op.slice(0,3).map(o => `<button type="button" class="saida" data-saida="${o[0]}" data-cada="${o[3] || ''}"><span>${o[1]}: <b>${o[2]}</b></span></button>`).join('');
+  }
+  const lig = [];
+  if (estado.levaCerveja) lig.push(['cerveja','Cerveja: cada um leva a sua']);
+  if (estado.semExtras) lig.push(['extras','Sem queijo coalho e pão de alho']);
+  sa += lig.length ? `<div class="ligados">${lig.map(l => `<button type="button" class="ligado" data-desfaz="${l[0]}">${l[1]} <span aria-hidden="true">×</span><span class="sr">desfazer</span></button>`).join('')}</div>` : '';
+  document.getElementById('saidas').innerHTML = sa;
+  // linhas
+  let h = '', cat = '';
+  c.L.forEach(l => { if (l.cat !== cat){ cat = l.cat; h += `<h4>${cat}</h4>`; }
+    h += `<div class="l"><span class="n">${l.nome}</span><span class="q">${l.txt}</span><span class="v">${R(l.custo)}</span></div>`; });
+  if (c.L.some(l => l.id === 'carvao')) h += `<p class="regra">Carvão: 1 kg por quilo de carne; costela pede mais um saco.</p>`;
+  document.getElementById('linhas').innerHTML = h;
+  document.getElementById('carimbo').style.display = c.N && c.cabe !== 'nao' ? '' : 'none';
+  document.getElementById('pe-carne').textContent = c.N ? `${kg(c.carneKg)} de carne · preços de out–nov/2026` : '';
+  // barra
+  document.getElementById('b-pp').textContent = R0(pp);
+  document.getElementById('b-tx').textContent = (c.A ? 'por adulto' : 'por pessoa') + ' · total ' + R(c.soma) + (c.cabe === 'sim' || c.cabe === 'troca' ? ' · cabe ✓' : c.cabe === 'nao' ? ' · não cabe' : '');
+  // chips do boi
+  document.getElementById('chips-boi').innerHTML = BOIS.map(b => `<button type="button" class="chip" data-v="${b}" aria-pressed="${estado.boi === b}">${ITENS[b].nome} <small>${R(preco[b])}</small></button>`).join('');
+  document.querySelectorAll('[data-grupo="fogo"] .chip').forEach(x => x.setAttribute('aria-pressed', x.dataset.v === estado.fogo));
+  document.getElementById('sem-pix').classList.toggle('off', !!priv.pix);
+  // zap
+  document.getElementById('zap').href = 'https://wa.me/?text=' + encodeURIComponent(textoLista(c, true));
+  desenharCortes(); desenharFogo(); desenharFontes(); if (document.getElementById('mercado').classList.contains('on')) desenharMercado();
+  gravar();
+}
+function textoLista(c, curto){
+  const pp = c.pagantes ? c.soma / c.pagantes : 0;
+  const ar = arred(c);
+  let t = `*${priv.nome || 'Churrasco da turma'}*\n${priv.quando ? priv.quando + '\n' : ''}${pl(c.A,'adulto','adultos')}${c.C ? ' e ' + pl(c.C,'criança','crianças') + ' (criança não paga)' : ''}\n\n`;
+  t += `*Cada adulto põe: ${R0(pp)}*\nTotal estimado: ${R(c.soma)}\n`;
+  if (ar.troco > 0.009) t += `(${ar.n} × ${R0(pp)} = ${R(ar.junta)}: arredondado; o troco volta pra turma)\n`;
+  t += priv.pix ? `Pix: ${priv.pix}\n` : `Pix: combinar com quem organiza\n`;
+  if (estado.levaCerveja && c.B) t += `Cerveja: cada um leva a sua\n`;
+  let cat = '';
+  c.L.forEach(l => { if (l.cat !== cat){ cat = l.cat; t += `\n*${cat}*\n`; } t += `• ${l.nome}: ${l.txt}\n`; });
+  t += `\nPreços de referência; a conta fecha com a nota do mercado.\nFeito na Lista da Brasa`;
+  return t;
+}
+
+// ===== controles =====
+document.querySelectorAll('.stp').forEach(s => {
+  const campo = s.dataset.campo, inp = s.querySelector('input');
+  const fixa = (v, digitando) => {
+    let n = parseInt(v, 10); if (isNaN(n)) n = 0;
+    n = Math.max(0, Math.min(campo === 'criancas' ? 100 : 200, n));
+    if (campo === 'bebem') n = Math.min(n, estado.adultos);
+    estado[campo] = n; if (!digitando || String(n) !== inp.value) inp.value = n;
+    if (campo === 'adultos' && estado.bebem > n){ estado.bebem = n; document.getElementById('bebem').value = n; }
+    desenhar();
+  };
+  s.querySelectorAll('button').forEach(b => b.addEventListener('click', () => fixa(estado[campo] + Number(b.dataset.d))));
+  inp.addEventListener('input', () => fixa(inp.value, true));
+  inp.addEventListener('focus', () => inp.select());
+});
+const vq = document.getElementById('vaquinha');
+vq.addEventListener('input', () => { const n = parseInt(vq.value.replace(/\D/g,''), 10); estado.vaquinha = isNaN(n) ? 0 : Math.min(n, 999999); vq.value = estado.vaquinha ? estado.vaquinha.toLocaleString('pt-BR') : ''; desenhar(); });
+document.addEventListener('click', ev => {
+  const ch = ev.target.closest('.chips .chip'); if (!ch) return;
+  const g = ch.closest('.chips').dataset.grupo; estado[g] = ch.dataset.v; if (g === 'fogo') abaAtual = estado.fogo; desenhar();
+});
+['nome','pix','quando'].forEach(id => document.getElementById(id).addEventListener('input', e => { priv[id] = e.target.value.trim(); desenhar(); }));
+const toast = m => { const t = document.getElementById('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('on'), 1500); };
+// copia a lista; chame direto no toque (o navegador só deixa copiar dentro dele). Devolve se copiou.
+function copiarLista(){
+  const txt = textoLista(atual);
+  const reserva = () => { const a = document.createElement('textarea'); a.value = txt; a.setAttribute('readonly',''); a.style.position = 'fixed'; a.style.opacity = '0'; document.body.appendChild(a); a.select(); let ok = false; try { ok = document.execCommand('copy'); } catch(_){} a.remove(); toast(ok ? 'Lista copiada' : 'Não deu para copiar'); return ok; };
+  try { return navigator.clipboard.writeText(txt).then(() => { toast('Lista copiada'); return true; }, reserva); }
+  catch(e){ return Promise.resolve(reserva()); }
+}
+document.getElementById('copiar').addEventListener('click', () => { copiarLista(); saiu(); });
+document.getElementById('zerar').addEventListener('click', () => {
+  Object.assign(estado, {adultos:10, criancas:2, bebem:6, vaquinha:0, fogo:'churrasqueira', boi:'picanha', levaCerveja:false, semExtras:false}); marcados = {};
+  ['adultos','criancas','bebem'].forEach(k => document.getElementById(k).value = estado[k]); vq.value = '';
+  document.getElementById('voltou').classList.remove('on'); desenhar(); toast('Lista nova');
+});
+
+// janelas
+const abrir = id => { document.getElementById(id).classList.add('on'); document.body.style.overflow = 'hidden'; };
+const fechar = el => { el.classList.remove('on'); if (!document.querySelector('.jan.on,.mercado.on')) document.body.style.overflow = ''; };
+document.querySelectorAll('.jan:not(.jan-p)').forEach(j => { j.addEventListener('click', e => { if (e.target === j || e.target.closest('[data-fecha]')) fechar(j); }); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape'){ document.querySelectorAll('.jan.on,.mercado.on').forEach(fechar); } });
+
+// preços
+function montarPrecos(){
+  document.getElementById('precos').innerHTML = Object.keys(ITENS).map(id => `<label class="preco-l"><span>${ITENS[id].nome}<small>${ITENS[id].un} · ${ITENS[id].f === 'T' ? 'referência ' + FONTE_T.mes : 'estimativa nov/2026'}</small></span><input type="text" inputmode="decimal" data-id="${id}" value="${preco[id].toFixed(2).replace('.',',')}" aria-label="Preço de ${ITENS[id].nome}"></label>`).join('');
+  document.querySelectorAll('#precos input').forEach(i => i.addEventListener('input', () => { const v = parseFloat(i.value.replace(/\./g,'').replace(',','.')); if (!isNaN(v) && v >= 0){ preco[i.dataset.id] = v; desenhar(); } }));
+}
+document.getElementById('abrir-precos').addEventListener('click', () => { montarPrecos(); abrir('jan-precos'); });
+document.getElementById('restaurar').addEventListener('click', () => { Object.keys(ITENS).forEach(k => preco[k] = ITENS[k].preco); montarPrecos(); desenhar(); toast('Preços de referência de volta'); });
+
+// ===== modo mercado =====
+const EMB = {cerveja:['lata de 350 ml','latas de 350 ml'], refri:['garrafa de 2 L','garrafas de 2 L'], agua:['garrafa de 1,5 L','garrafas de 1,5 L'],
+  paoalho:['pacote com 5','pacotes com 5'], coalho:['pacote com 7 espetos','pacotes com 7 espetos'], farofa:['pacote de 500 g','pacotes de 500 g'],
+  sal:['pacote de 1 kg','pacotes de 1 kg'], gelo:['saco de 5 kg','sacos de 5 kg'], carvao:['saco de 3 kg','sacos de 3 kg']};
+const qtdLonga = l => EMB[l.id] ? pl(l.qtd, EMB[l.id][0], EMB[l.id][1]) : kg(l.qtd);
+function desenharMercado(){
+  const c = atual; let h = '', cat = '', feitos = 0, falta = 0;
+  c.L.forEach(l => { if (l.cat !== cat){ cat = l.cat; h += `<h4>${cat}</h4>`; }
+    const ok = !!marcados[l.id]; if (ok) feitos++; else falta += l.custo;
+    h += `<label class="mi${ok ? ' ok' : ''}"><input type="checkbox" data-id="${l.id}"${ok ? ' checked' : ''}><span class="cx"><svg><use href="#i-ok"/></svg></span><span class="tx"><b>${l.nome}</b><span class="qq">${qtdLonga(l)}</span><small>cerca de ${R0(l.custo)} no total</small></span></label>`; });
+  document.getElementById('merc-lista').innerHTML = h || '<p>Ponha quantos vêm para a lista aparecer.</p>';
+  document.getElementById('merc-cont').textContent = `${feitos} de ${c.L.length} no carrinho`;
+  document.getElementById('merc-prog').style.width = (c.L.length ? feitos / c.L.length * 100 : 0) + '%';
+  document.getElementById('merc-tot').textContent = feitos === c.L.length && c.L.length ? 'Tudo no carrinho 🔥' : 'Falta pegar: ' + R(falta);
+  document.querySelectorAll('#merc-lista input').forEach(i => i.addEventListener('change', () => { if (i.checked) marcados[i.dataset.id] = 1; else delete marcados[i.dataset.id]; gravar(); desenharMercado(); }));
+}
+document.querySelectorAll('[data-abre-mercado]').forEach(b => b.addEventListener('click', e => { e.preventDefault(); desenharMercado(); abrir('mercado'); }));
+document.getElementById('fechar-merc').addEventListener('click', () => fechar(document.getElementById('mercado')));
+document.getElementById('desmarcar').addEventListener('click', () => { marcados = {}; gravar(); desenharMercado(); });
+
+// ===== imagem da conta (1080 × 1350) =====
+const LOGO_SVG = (a, b) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 258">` + document.getElementById('logo').innerHTML.replace(/var\(--la\)/g, a).replace(/var\(--lb\)/g, b) + `</svg>`;
+function carregarImg(src){ return new Promise((ok, erro) => { const i = new Image(); i.onload = () => ok(i); i.onerror = erro; i.src = src; }); }
+function quebra(ctx, txt, larg){ const p = txt.split(' '); let l = '', out = []; p.forEach(w => { const t = l ? l + ' ' + w : w; if (ctx.measureText(t).width > larg && l){ out.push(l); l = w; } else l = t; }); if (l) out.push(l); return out; }
+let blobAtual = null;
+function arred(c){ const n = c.pagantes || 0; const cada = n ? Math.ceil(c.soma / n - 0.001) : 0; const junta = cada * n; return {n, cada, junta, troco: Math.max(0, junta - c.soma)}; }
+async function gerarImagem(){
+  const c = atual, W = 1080, H = 1350, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+  const x = cv.getContext('2d');
+  try { await Promise.all(['800 80px "Bricolage Grotesque"','700 40px "Bricolage Grotesque"','400 30px Inter','600 30px Inter','700 30px Inter'].map(f => document.fonts.load(f))); } catch(e){}
+  const TF = '"Bricolage Grotesque", system-ui, sans-serif', IF = 'Inter, system-ui, sans-serif';
+  x.fillStyle = '#FAF6EF'; x.fillRect(0, 0, W, H);
+  // borda acesa embaixo
+  x.fillStyle = '#C2410C'; x.beginPath(); x.moveTo(0, H); for (let i = 0; i <= W; i += 40) x.lineTo(i, H - (i / 40 % 2 ? 34 : 14)); x.lineTo(W, H); x.fill();
+  try { const lg = await carregarImg('data:image/svg+xml;charset=utf-8,' + encodeURIComponent(LOGO_SVG('#1F1A17', '#C2410C'))); x.drawImage(lg, 64, 56, 400, 86); } catch(e){}
+  // nome
+  x.fillStyle = '#1F1A17';
+  const nomeImg = priv.nome || 'Churrasco da turma';
+  let fs = 76, linhasN = [];
+  for (; fs >= 52; fs -= 4){ x.font = `800 ${fs}px ${TF}`; linhasN = quebra(x, nomeImg, W - 128); if (linhasN.length <= 2) break; }
+  if (fs < 52){ fs = 52; x.font = `800 ${fs}px ${TF}`; }
+  if (linhasN.length > 2){ linhasN = linhasN.slice(0, 2); while (x.measureText(linhasN[1] + '…').width > W - 128 && linhasN[1].length > 1) linhasN[1] = linhasN[1].slice(0, -1); linhasN[1] += '…'; }
+  let y = 186 + fs * .8;
+  linhasN.forEach((l, i) => { if (i) y += fs * 1.05; x.fillText(l, 64, y); });
+  const corta = (txt, larg) => { let t = txt; if (x.measureText(t).width <= larg) return t; while (t.length > 1 && x.measureText(t + '…').width > larg) t = t.slice(0, -1); return t + '…'; };
+  if (priv.quando){ y += 54; x.font = `600 34px ${IF}`; x.fillStyle = '#C2410C'; x.fillText(corta(priv.quando, W - 128), 64, y); }
+  y += 50; x.font = `500 30px ${IF}`; x.fillStyle = '#5C534C';
+  x.fillText(`${pl(c.A,'adulto','adultos')}${c.C ? ' e ' + pl(c.C,'criança','crianças') + ' (criança não paga)' : ''} · ${kg(c.carneKg)} de carne`, 64, y); y += 36;
+  // cartão escuro
+  const pp = c.pagantes ? c.soma / c.pagantes : 0;
+  x.fillStyle = '#1F1A17'; x.beginPath(); x.roundRect(64, y, W - 128, 250, 28); x.fill();
+  x.fillStyle = '#F2703A'; x.font = `700 28px ${IF}`; x.fillText((c.A ? 'CADA ADULTO PÕE' : 'CADA UM PÕE'), 104, y + 62);
+  x.fillStyle = '#FAF6EF'; x.font = `800 128px ${TF}`; x.fillText(R0(pp), 100, y + 190);
+  x.textAlign = 'right'; x.font = `600 28px ${IF}`; x.fillStyle = '#CFC3B5'; x.fillText('Total estimado', W - 104, y + 62);
+  x.fillStyle = '#FAF6EF'; x.font = `800 48px ${TF}`; x.fillText(R(c.soma), W - 104, y + 118);
+  const ar = arred(c);
+  x.font = `500 26px ${IF}`; x.fillStyle = '#CFC3B5'; x.fillText(`${ar.n} × ${R0(pp)} = ${R(ar.junta)}`, W - 104, y + 160);
+  if (ar.troco > 0.009){ x.fillText(`arredondado; o troco volta pra turma`, W - 104, y + 198); }
+  else if (c.cabe === 'sim' || c.cabe === 'troca'){ x.font = `600 26px ${IF}`; x.fillStyle = '#8FD19E'; x.fillText(`cabe nos ${R0(estado.vaquinha)} ✓`, W - 104, y + 198); }
+  x.textAlign = 'left'; y += 250 + 40;
+  if (priv.pix){ x.fillStyle = '#F2B430'; x.beginPath(); x.roundRect(64, y, W - 128, 64, 16); x.fill(); x.fillStyle = '#1F1A17'; x.font = `700 30px ${IF}`;
+    let t = 'Pix: ' + priv.pix; while (x.measureText(t).width > W - 180 && t.length > 12) t = t.slice(0, -2); x.fillText(t, 92, y + 43); y += 64 + 28; }
+  // lista resumida
+  if (!priv.pix) y += 6; y += 22;
+  x.font = `700 24px ${IF}`; x.fillStyle = '#C2410C'; x.fillText('O QUE VAI NA LISTA', 64, y); y += 18;
+  let resumo = c.L.filter(l => ['Carnes','Bebidas'].includes(l.cat) || ['paoalho','carvao'].includes(l.id)).map(l => ({nome:l.nome, txt:l.txt}));
+  if (estado.levaCerveja && c.B) resumo.push({nome:'Cerveja', txt:'cada um leva a sua'});
+  const fim = H - 116; const minAlt = 34;
+  if ((fim - y) / resumo.length < minAlt) resumo = resumo.slice(0, Math.max(1, Math.floor((fim - y) / minAlt)));
+  const alt = Math.min(62, (fim - y) / Math.max(1, resumo.length));
+  x.font = `500 ${Math.round(Math.min(34, alt * .64))}px ${IF}`;
+  resumo.forEach(l => { y += alt; x.fillStyle = '#1F1A17'; x.textAlign = 'left'; x.fillText(l.nome, 64, y); x.textAlign = 'right'; x.fillStyle = '#5C534C'; x.fillText(l.txt.replace(/ \(.*\)/,''), W - 64, y);
+    x.strokeStyle = '#E2D6C4'; x.lineWidth = 2; x.beginPath(); x.moveTo(64, y + alt * .3); x.lineTo(W - 64, y + alt * .3); x.stroke(); });
+  x.textAlign = 'left'; x.font = `500 24px ${IF}`; x.fillStyle = '#5C534C';
+  x.fillText('Preços de referência. A conta fecha com a nota do mercado.', 64, H - 74);
+  return await new Promise(ok => cv.toBlob(ok, 'image/png'));
+}
+document.getElementById('baixar').addEventListener('click', async () => {
+  document.getElementById('aviso-img').classList.remove('on');
+  const prev = document.getElementById('previa'); prev.removeAttribute('src'); abrir('jan-img');
+  blobAtual = await gerarImagem(); prev.src = URL.createObjectURL(blobAtual);
+});
+// nome do arquivo e aviso do que aconteceu com a imagem (usados aqui e pelo cadastro)
+function nomeImagem(){ return 'conta-' + ((priv.nome || 'churrasco').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'') || 'churrasco') + '.png'; }
+function avisarEntrega(r){
+  if (r === 'mostrar') document.getElementById('aviso-img').classList.add('on');
+  else if (r === 'salvo' || r === 'baixado') toast('Imagem salva');
+  else if (r === 'compartilhado') toast('Pronto, foi');
+}
+document.getElementById('salvar-img').addEventListener('click', async () => {
+  if (!blobAtual) return;
+  saiu();
+  avisarEntrega(await entregarArquivo(nomeImagem(), blobAtual));
+});
+
+// ===== cortes =====
+const CORTES = [
+  {id:'picanha', foto:'picanha-fatiada.jpg', txt:'A rainha. Capa de gordura que derrete na brasa. Vale quando é o prato principal e o bolso deixa.'},
+  {id:'fraldinha', foto:'corte-fraldinha.jpg', txt:'O melhor custo-benefício do boi: macia e suculenta. Peça inteira e fatie contra a fibra.'},
+  {id:'contrafile', foto:'corte-contrafile.jpg', txt:'Em bifes grossos, sal grosso e brasa forte. Agrada quem gosta de carne com gordura na borda.'},
+  {id:'alcatra', foto:'corte-alcatra.jpg', txt:'Pouca gordura e muito rendimento. Em tiras ou bifes, não deixe passar do ponto.'},
+  {id:'costela', foto:'corte-costela.jpg', txt:'A mais barata e a que mais impressiona, mas pede 4 a 6 horas de fogo baixo. Churrasco de tarde inteira.'},
+  {id:'linguica', foto:'corte-linguica.jpg', txt:'Entra primeiro e segura a fome. Com o frango e a panceta, faz metade da lista por pouco.', fixo:true}
+];
+function desenharCortes(){
+  document.getElementById('grade-c').innerHTML = CORTES.map(c => `<article class="corte"><div class="foto" style="background-image:url(fotos/${c.foto})" role="img" aria-label="${ITENS[c.id].nome}"></div><div class="corpo">
+    <div class="l1"><h3>${ITENS[c.id].nome}</h3><button type="button" class="preco num" data-ajusta title="Ajustar o preço">${R(preco[c.id])}<small>/kg</small></button></div>
+    <span class="fonte">${ITENS[c.id].f === 'T' ? 'preço de referência · ' + FONTE_T.mes : 'preço estimado · nov/2026'}</span>
+    <p>${c.txt}</p>${c.fixo ? '<span class="fonte" style="margin-top:auto">Já vai em toda lista: 20% da carne.</span>' : `<button type="button" class="usar" data-boi="${c.id}" aria-pressed="${estado.boi === c.id}">${estado.boi === c.id ? '✓ Na sua lista' : 'Usar este'}</button>`}</div></article>`).join('');
+}
+document.getElementById('saidas').addEventListener('click', e => {
+  const s = e.target.closest('[data-saida]'), d = e.target.closest('[data-desfaz]');
+  if (s){ const k = s.dataset.saida;
+    if (k === 'cerveja') estado.levaCerveja = true;
+    if (k === 'extras'){ estado.semExtras = true; if (atual.cerveja > 0) estado.levaCerveja = true; }
+    if (k === 'pedir'){ estado.vaquinha = Number(s.dataset.cada) * (estado.adultos || (estado.adultos + estado.criancas)); vq.value = estado.vaquinha.toLocaleString('pt-BR'); }
+    desenhar(); }
+  if (d){ if (d.dataset.desfaz === 'cerveja') estado.levaCerveja = false; else estado.semExtras = false; desenhar(); }
+});
+document.getElementById('grade-c').addEventListener('click', e => { if (e.target.closest('[data-ajusta]')){ montarPrecos(); abrir('jan-precos'); return; } const b = e.target.closest('[data-boi]'); if (!b) return; estado.boi = b.dataset.boi; desenhar(); toast(ITENS[estado.boi].nome + ' na lista'); });
+
+// ===== na hora do fogo =====
+const PREP = {
+  churrasqueira:{intro:'Carvão em brasa, sem chama alta. Teste da mão a um palmo da grelha: aguentou 3 segundos é brasa forte; 6 segundos, brasa média.', l:{
+    picanha:['Bifes de 3 dedos, sal grosso, gordura para baixo primeiro','15–20 min','Brasa forte'],
+    contrafile:['Bifes de 3 cm, sal grosso','10–12 min','Brasa forte'],
+    alcatra:['Bifes grossos ou tiras','12–15 min','Brasa forte'],
+    fraldinha:['Peça inteira, sal grosso; fatie contra a fibra','25–35 min','Brasa forte'],
+    costela:['Embrulhada em papel-manteiga nas 3 primeiras horas','4–6 h','Brasa baixa, alta na grelha'],
+    linguica:['Inteira; fure só no fim','20–25 min','Brasa média'],
+    sobrecoxa:['Pele para cima; vire no fim para dourar','35–45 min','Brasa média'],
+    panceta:['Em tiras grossas, sal grosso','35–40 min','Brasa média'],
+    paoalho:['Na ponta da grelha, vire uma vez','8–10 min','Brasa média'],
+    coalho:['No espeto, quando a brasa baixar','5–8 min','Brasa média']}},
+  grelha:{intro:'Grelha a gás, elétrica ou bistequeira, pré-aquecida por 10 minutos (cerca de 230 °C). Não aperte a carne com a espátula.', l:{
+    picanha:['Bifes de 3 cm, sal grosso moído','4–5 min por lado','Fogo alto'],
+    contrafile:['Bifes de 2 cm','3–4 min por lado','Fogo alto'],
+    alcatra:['Bifes de 2 cm','3–4 min por lado','Fogo alto'],
+    fraldinha:['Bifes de 2 cm, contra a fibra','3–4 min por lado','Fogo alto'],
+    costela:['Na grelha não dá ponto. Faça no forno a 160 °C, embrulhada, por 4 h','não vale aqui','troque o corte do boi'],
+    linguica:['Aberta ao meio no comprimento','12–15 min','Fogo médio'],
+    sobrecoxa:['Sem osso, pele para baixo primeiro','6–7 min por lado','Fogo médio'],
+    panceta:['Em tiras finas','10–12 min','Fogo médio'],
+    paoalho:['Tampado, se a grelha tiver tampa','6–8 min','Fogo médio'],
+    coalho:['Grelha bem quente e untada','2–3 min por lado','Fogo alto']}},
+  airfryer:{intro:'Pré-aqueça 5 minutos, não amontoe (até uns 500 g por vez) e vire na metade do tempo.', l:{
+    picanha:['Bifes de 3 cm, gordura para cima','12–15 min','200 °C'],
+    contrafile:['Bifes de 2 cm','10–12 min','200 °C'],
+    alcatra:['Bifes de 2 cm','10–12 min','200 °C'],
+    fraldinha:['Bifes de 2 cm ou peça pequena','12–15 min','200 °C'],
+    costela:['Cabe pouco e pede horas','não vale aqui','troque o corte do boi'],
+    linguica:['Inteira, sem furar','18–20 min','200 °C'],
+    sobrecoxa:['Uma camada só','25–30 min','200 °C'],
+    panceta:['Em cubos','20–25 min','200 °C'],
+    paoalho:['Direto do congelador','8–10 min','180 °C'],
+    coalho:['Sobre papel-manteiga','6–8 min','200 °C']}}
+};
+let abaAtual = 'churrasqueira';
+function desenharFogo(){
+  const m = abaAtual, c = atual, boi = c.boi, nb = ITENS[boi].nome;
+  document.querySelectorAll('.aba').forEach(a => a.setAttribute('aria-selected', a.dataset.aba === m));
+  document.getElementById('prep-intro').textContent = PREP[m].intro;
+  const ids = [boi, 'linguica', 'sobrecoxa', 'panceta', 'paoalho', 'coalho'];
+  document.getElementById('prep').innerHTML = ids.map(id => { const p = PREP[m].l[id]; return `<tr class="${p[1] === 'não vale aqui' ? 'na' : ''}"><td>${ITENS[id].nome}</td><td>${p[0]}</td><td class="t">${p[1]}</td><td>${p[2]}</td></tr>`; }).join('');
+  const passos = [];
+  const costela = boi === 'costela';
+  const t = id => PREP[m].l[id][1];
+  const foraCostela = costela && m !== 'churrasqueira';
+  const aviso = document.getElementById('aviso-costela');
+  aviso.style.display = foraCostela ? '' : 'none';
+  document.getElementById('aviso-costela-tx').textContent = `Costela não vale na ${m === 'grelha' ? 'grelha' : 'airfryer'}: troque o corte do boi.`;
+  if (m === 'churrasqueira'){
+    if (costela){
+      passos.push(['pre','6 h antes de servir','Acenda o carvão','Uma porção pequena. Brasa pronta em 30 a 40 min, coberta de cinza branca.']);
+      passos.push(['pre','30 a 40 min depois','Costela no fogo','Brasa baixa e grelha no alto, osso para baixo. Reponha um pouco de carvão a cada hora.']);
+      passos.push(['pre','1 h antes de servir','Aumente a brasa','Puxe brasa nova para o lado da grelha baixa: é a vez do resto.']);
+    } else passos.push(['pre','40 min antes','Acenda o carvão','Pronta quando a brasa fica coberta de cinza branca.']);
+    passos.push(['', '1º','Frango e panceta','São os mais demorados: entram primeiro. <em>' + t('sobrecoxa') + '</em>']);
+    passos.push(['', '2º','Linguiça','Entra uns 15 min depois e é a primeira a sair para a roda. <em>' + t('linguica') + '</em>']);
+    passos.push(['', '3º','Pão de alho e queijo coalho', (costela ? 'Petisco enquanto a costela termina. ' : 'Petisco enquanto o boi vai para o fogo. ') + '<em>' + t('paoalho') + '</em>']);
+    if (costela) passos.push(['', '4º','Costela na tábua','Sai quando o osso solta fácil, depois de 4 a 6 horas. Corte entre os ossos.']);
+    else passos.push(['', '4º', nb, 'Por último, para chegar quente na tábua. Descanse 5 min antes de fatiar. <em>' + t(boi) + '</em>']);
+  } else if (m === 'grelha'){
+    passos.push(['pre','10 min antes','Ligue a grelha','No máximo, para pegar a marca.']);
+    passos.push(['', '1º','Linguiça','Na grelha é a mais demorada: começa por ela. <em>' + t('linguica') + '</em>']);
+    passos.push(['', '2º','Frango e panceta','Entram quando a linguiça vira. <em>' + t('sobrecoxa') + '</em>']);
+    passos.push(['', '3º','Pão de alho e queijo coalho', (foraCostela ? 'Petisco da roda. ' : 'Petisco enquanto o boi vai para a grelha. ') + '<em>' + t('paoalho') + '</em>']);
+    if (!foraCostela) passos.push(['', '4º', nb, 'Por último, para chegar quente na tábua. Descanse 5 min antes de fatiar. <em>' + t(boi) + '</em>']);
+  } else {
+    const rod = Math.ceil(c.carneKg / 0.5), hh = Math.round(rod * 20 / 60 * 10) / 10;
+    passos.push(['pre','5 min antes','Pré-aqueça a airfryer',`Até 500 g por vez: são ${pl(rod,'rodada','rodadas')}, cerca de ${hh > 1 ? hh.toLocaleString('pt-BR') + ' h' : rod * 20 + ' min'} de forno no total.`]);
+    passos.push(['', '1º','Linguiça','A primeira rodada segura a fome. <em>' + t('linguica') + '</em>']);
+    passos.push(['', '2º','Frango e panceta','Uma camada só por rodada. <em>' + t('sobrecoxa') + '</em>']);
+    passos.push(['', '3º','Pão de alho e queijo coalho','Rodada rápida, petisco da roda. <em>' + t('paoalho') + '</em>']);
+    if (!foraCostela) passos.push(['', '4º', nb, 'Por último, para chegar quente na tábua. <em>' + t(boi) + '</em>']);
+  }
+  document.getElementById('ordem').innerHTML = passos.map(p => `<li class="${p[0]}"><span class="b">${p[0] === 'pre' ? '⏱' : p[1]}</span><div><b>${p[0] === 'pre' ? p[1] + ' · ' : ''}${p[2]}</b><span>${p[3]}</span></div></li>`).join('');
+  document.getElementById('ordem-sub').textContent = `Para a sua lista, com ${nb.toLowerCase()}, na ${m === 'churrasqueira' ? 'churrasqueira' : m === 'grelha' ? 'grelha' : 'airfryer'}.`;
+}
+document.querySelectorAll('.aba').forEach(a => a.addEventListener('click', () => { abaAtual = a.dataset.aba; desenharFogo(); }));
+
+// fontes no rodapé
+function desenharFontes(){
+  document.getElementById('tabela-fontes').innerHTML = Object.keys(ITENS).map(id => `<tr><td>${ITENS[id].nome} <span style="color:#8F8277">/ ${ITENS[id].un}</span></td><td class="v">${R(preco[id])}</td><td>${ITENS[id].f === 'T' ? `<a href="${FONTE_T.url}" target="_blank" rel="noopener">Tribuna do Paraná, ${FONTE_T.mes}</a>` : 'Estimativa nossa, nov/2026'}</td></tr>`).join('') +
+  `<tr><td colspan="3" style="border:0;padding-top:10px;color:#8F8277">A Tribuna do Paraná somou os menores preços do Menor Preço (Nota Paraná) em outubro de 2026. Os outros itens são estimativa da Lista da Brasa em novembro de 2026.</td></tr>`;
+}
+
+// barra fixa: aparece quando o total da comanda sai da tela
+const barra = document.getElementById('barra');
+const alvo = document.getElementById('cmd-tot');
+function verBarra(){ const r = alvo.getBoundingClientRect(); const fora = r.bottom < 60 || r.top > innerHeight - 40; const merc = document.getElementById('mercado').classList.contains('on'); barra.classList.toggle('on', fora && !merc); barra.setAttribute('aria-hidden', !(fora && !merc)); }
+addEventListener('scroll', verBarra, {passive:true}); addEventListener('resize', verBarra);
+
+// ===== voltar =====
+(function(){
+  const s = ler();
+  if (s && s.estado){
+    Object.assign(estado, s.estado); if (s.preco) Object.assign(preco, s.preco); marcados = s.marcados || {}; quando = s.quando;
+    ['adultos','criancas','bebem'].forEach(k => document.getElementById(k).value = estado[k]);
+    vq.value = estado.vaquinha ? estado.vaquinha.toLocaleString('pt-BR') : '';
+    abaAtual = estado.fogo;
+    if (quando){ const d = new Date(quando); const n = estado.adultos + estado.criancas;
+      const hoje = d.toDateString() === new Date().toDateString();
+      document.getElementById('voltou-tx').textContent = hoje ? `Você parou aqui: ${pl(n,'pessoa','pessoas')}.` : `Da última vez (${d.toLocaleDateString('pt-BR',{weekday:'short', day:'2-digit', month:'2-digit'})}): ${pl(n,'pessoa','pessoas')}.`;
+      document.getElementById('voltou').classList.add('on'); }
+  } else abaAtual = estado.fogo;
+  document.getElementById('cmd-data').textContent = new Date().toLocaleDateString('pt-BR',{day:'2-digit', month:'2-digit'});
+  desenhar(); verBarra();
+  addEventListener('load', verBarra); setTimeout(verBarra, 600);
+})();
+
+// ===== cadastro antes de levar a conta =====
+// Fazer a conta e ver o resultado na tela é livre. Levar a conta para fora (baixar, salvar, mandar no WhatsApp,
+// copiar) pede, uma vez só por pessoa, o WhatsApp ou o e-mail. A saída nunca espera o banco: o cadastro grava em
+// paralelo e, se o banco não existir ou falhar, fica neste aparelho para tentar de novo na próxima visita.
+const comPrazo = (p, ms) => Promise.race([Promise.resolve(p), new Promise((_, nao) => setTimeout(() => nao(new Error('prazo')), ms || 5000))]);
+const temClaude = false; // cópia pública: sem banco, sem contagem de uso, sem cadastro (CDC-015)
+const NUVEM = {db:null, id:null, dono:false, pronto:false};
+const CHAVE_CAD = 'listadabrasa:cadastro';
+const lerCad = () => { try { return JSON.parse(localStorage.getItem(CHAVE_CAD) || 'null'); } catch(e){ return null; } };
+const gravarCad = v => { try { if (v) localStorage.setItem(CHAVE_CAD, JSON.stringify(v)); else localStorage.removeItem(CHAVE_CAD); } catch(e){} };
+const CAD = {feito: !!(lerCad() || {}).feito, origem:'conta', blob:null};
+const pedeCadastro = () => false; // cópia pública: levar a conta é livre (CDC-015)
+// uma gravação por vez em cada documento
+const FILA = {};
+const naFila = (caminho, op) => (FILA[caminho] = (FILA[caminho] || Promise.resolve()).catch(() => {}).then(op));
+
+// --- contadores de uso: um documento por pessoa; grava na hora a cada saída e cadastro, e o resto quando muda ---
+const USO = {dados:{visitas:0, contas:0, saidas:0, pediu_saida:0, cadastrou:0}, lido:false, sujo:false, t:null, falhas:0};
+function agendarUso(){ if (USO.t || !USO.lido) return; USO.t = setTimeout(() => { USO.t = null; gravarUso(); }, 1500); }
+function contar(campo){ USO.dados[campo] = (USO.dados[campo] || 0) + 1; USO.sujo = true; agendarUso(); }
+function marcarUso(campo, v){ if (USO.dados[campo] === v) return; USO.dados[campo] = v; USO.sujo = true; agendarUso(); }
+function gravarUso(){ // devolve a promessa da gravação na fila (resolve mesmo se falhar)
+  const c = 'uso/' + NUVEM.id;
+  if (!USO.lido || !USO.sujo || !NUVEM.db || !NUVEM.id || USO.falhas > 2) return (FILA[c] || Promise.resolve()).catch(() => {});
+  USO.sujo = false;
+  const d = Object.assign({}, USO.dados, {ultima: new Date().toISOString()});
+  return naFila(c, () => comPrazo(NUVEM.db.doc(c).set(d), 8000)).then(() => { USO.falhas = 0; }, () => { USO.falhas++; USO.sujo = true; });
+}
+function gravarUsoJa(){ clearTimeout(USO.t); USO.t = null; return gravarUso(); }
+async function iniciarUso(){
+  let d = {};
+  try { const sn = await comPrazo(NUVEM.db.doc('uso/' + NUVEM.id).get(), 6000); if (sn && sn.exists) d = (sn.data && sn.data()) || {}; } catch(e){ return; }
+  ['visitas','contas','saidas','pediu_saida'].forEach(k => { USO.dados[k] = (+d[k] || 0) + (USO.dados[k] || 0); });
+  USO.dados.visitas += 1;
+  USO.dados.cadastrou = CAD.feito ? 1 : 0;
+  USO.dados.primeira = d.primeira || new Date().toISOString();
+  USO.lido = true; USO.sujo = true; await gravarUsoJa();
+}
+// conta feita: quando a pessoa mexe na calculadora e para por 4 segundos, ou quando leva a conta sem ter mexido
+// (a conta implícita). Uma conta por estado da calculadora: levar duas vezes a mesma conta conta uma.
+const CONTA = {contada:false, t:null};
+function fecharConta(){ clearTimeout(CONTA.t); CONTA.t = null; if (!CONTA.contada){ CONTA.contada = true; contar('contas'); } }
+function mexeu(){ CONTA.contada = false; clearTimeout(CONTA.t); CONTA.t = setTimeout(fecharConta, 4000); }
+// toda saída soma 1, fecha a conta em aberto e grava na hora
+function saiu(){ fecharConta(); contar('saidas'); gravarUsoJa(); }
+document.querySelector('.calc').addEventListener('input', mexeu);
+document.querySelector('.calc').addEventListener('click', e => { if (e.target.closest('button')) mexeu(); });
+document.getElementById('saidas').addEventListener('click', e => { if (e.target.closest('button')) mexeu(); });
+document.getElementById('grade-c').addEventListener('click', e => { if (e.target.closest('[data-boi]')) mexeu(); });
+document.getElementById('precos').addEventListener('input', mexeu);
+['restaurar','zerar'].forEach(id => document.getElementById(id).addEventListener('click', mexeu));
+function guardarUsoJa(){ if (CONTA.t) fecharConta(); gravarUsoJa(); }
+addEventListener('pagehide', guardarUsoJa);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') guardarUsoJa(); });
+
+// --- o contato: celular com DDD (10 ou 11 dígitos, com ou sem espaço, traço, parênteses ou +55) ou e-mail ---
+function lerContato(v){
+  const t = String(v || '').trim();
+  if (!t || t.length > 120) return null;
+  if (t.indexOf('@') >= 0){
+    const e = t.toLowerCase();
+    return /^[^\s@]+@[^\s@]+\.[^\s@.]{2,}$/.test(e) && e.indexOf('..') < 0 ? {tipo:'email', contato:e} : null;
+  }
+  if (!/^\+?[\d\s().-]+$/.test(t) || (t[0] === '+' && !/^\+\s*55/.test(t))) return null;
+  let d = t.replace(/\D/g, '');
+  if ((d.length === 12 || d.length === 13) && d.slice(0, 2) === '55') d = d.slice(2);
+  d = d.replace(/^0+/, '');
+  if (!/^[1-9]{2}\d{8,9}$/.test(d)) return null;
+  const n = d.slice(2), meio = n.length - 4;
+  return {tipo:'whatsapp', contato:'+55 ' + d.slice(0, 2) + ' ' + n.slice(0, meio) + '-' + n.slice(meio)};
+}
+// o tamanho do churrasco vai junto: não é dado pessoal e diz ao dono o porte de cada cadastro
+const resumoConta = () => ({adultos: estado.adultos, criancas: estado.criancas, bebem: Math.min(estado.bebem, estado.adultos), teto: estado.vaquinha || null, total: atual ? atual.soma : 0});
+
+// --- janelas próprias (cadastro e privacidade): foco preso, «Esc» e «X» fecham, o foco volta a quem abriu ---
+const PILHA = [];
+const janCad = document.getElementById('jan-cad'), janPriv = document.getElementById('jan-priv');
+const ponteiroFino = !!(window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches);
+function abrirP(jan, gatilho, foco){
+  if (PILHA.indexOf(jan) < 0) PILHA.push(jan);
+  jan._volta = gatilho || document.activeElement;
+  jan.classList.add('on'); document.body.style.overflow = 'hidden';
+  const alvoFoco = (ponteiroFino && foco) || jan.querySelector('.jan-caixa'); // no celular, sem abrir o teclado de cara
+  setTimeout(() => { try { alvoFoco.focus({preventScroll:true}); } catch(e){} }, 0);
+}
+function fecharP(jan){
+  const i = PILHA.indexOf(jan); if (i < 0) return;
+  PILHA.splice(i, 1); fechar(jan);
+  const v = jan._volta; jan._volta = null;
+  if (v && v.focus && document.contains(v) && v.getClientRects().length){ try { v.focus({preventScroll:true}); } catch(e){} }
+}
+addEventListener('keydown', e => {
+  const topo = PILHA[PILHA.length - 1]; if (!topo) return;
+  if (e.key === 'Escape'){ e.preventDefault(); e.stopPropagation(); fecharP(topo); return; }
+  if (e.key === 'Tab'){
+    const caixa = topo.querySelector('.jan-caixa');
+    const f = [...caixa.querySelectorAll('a[href],button,input,textarea')].filter(x => !x.disabled && x.getClientRects().length);
+    if (!f.length) return;
+    const ativo = document.activeElement, pri = f[0], ult = f[f.length - 1];
+    if (!caixa.contains(ativo) || (e.shiftKey && (ativo === pri || ativo === caixa))){ e.preventDefault(); (e.shiftKey ? ult : pri).focus(); }
+    else if (!e.shiftKey && ativo === ult){ e.preventDefault(); pri.focus(); }
+    return;
+  }
+  if (e.key === 'Enter' && !e.isComposing && topo === janCad && e.target && (e.target.id === 'cad-nome' || e.target.id === 'cad-contato')){ e.preventDefault(); enviarCadastro(); }
+}, true);
+
+// --- a janela do cadastro ---
+const cadNome = document.getElementById('cad-nome'), cadContato = document.getElementById('cad-contato'), cadOfertas = document.getElementById('cad-ofertas'), cadErro = document.getElementById('cad-erro');
+const cadIr = document.getElementById('cad-ir'), cadZap = document.getElementById('cad-zap');
+const ROTULO = {conta:['Baixar a conta','#i-img'], copiar:['Copiar a lista','#i-copia']};
+const SAIDA_DE = {baixar:'conta', 'salvar-img':'conta', zap:'whatsapp', copiar:'copiar'};
+function erroCad(on){ cadErro.innerHTML = on ? 'Confira o número com DDD ou o <span class="nw">e-mail</span>.' : ''; cadContato.setAttribute('aria-invalid', on ? 'true' : 'false'); }
+function abrirCadastro(origem, gatilho){
+  CAD.origem = origem; erroCad(false);
+  // no WhatsApp, o botão da janela é o próprio link, já com o texto pronto: abre no mesmo toque do cadastro
+  const zap = origem === 'whatsapp';
+  cadIr.hidden = zap; cadZap.hidden = !zap;
+  if (zap) cadZap.href = document.getElementById('zap').href;
+  else { document.getElementById('cad-ir-tx').textContent = ROTULO[origem][0]; cadIr.querySelector('use').setAttribute('href', ROTULO[origem][1]); }
+  // a imagem já começa a ser feita agora, para sair no mesmo toque do botão
+  CAD.blob = origem !== 'conta' ? null : blobAtual && gatilho && gatilho.id === 'salvar-img' ? Promise.resolve(blobAtual) : gerarImagem().catch(() => null);
+  abrirP(janCad, gatilho, cadNome);
+}
+// lê o cadastro; com o contato errado, mostra o erro no campo e devolve null
+function lerLead(){
+  const c = lerContato(cadContato.value);
+  if (!c){ erroCad(true); cadContato.focus(); return null; }
+  erroCad(false);
+  return {nome: cadNome.value.trim().replace(/\s+/g, ' ').slice(0, 60), contato: c.contato, tipo: c.tipo, ofertas: !!cadOfertas.checked, origem: CAD.origem, quando: new Date().toISOString(), conta: resumoConta()};
+}
+function enviarCadastro(){ // «Baixar a conta», «Copiar a lista» e o «Enter» nos campos
+  if (CAD.origem === 'whatsapp'){ cadZap.click(); return; }
+  const lead = lerLead(); if (!lead) return;
+  // 1) a saída, no mesmo toque: o navegador só deixa baixar e copiar dentro dele
+  if (lead.origem === 'copiar') copiarLista();
+  if (lead.origem === 'conta') baixarConta();
+  // 2) o cadastro, em paralelo: a saída nunca espera o banco
+  registrar(lead); saiu();
+  fecharP(janCad);
+}
+cadIr.addEventListener('click', enviarCadastro);
+cadZap.addEventListener('click', e => { // o link segue para o WhatsApp; só é barrado com o contato errado
+  const lead = lerLead();
+  if (!lead){ e.preventDefault(); return; }
+  registrar(lead); saiu();
+  setTimeout(() => fecharP(janCad), 60);
+});
+cadContato.addEventListener('input', () => { if (cadContato.getAttribute('aria-invalid') === 'true' && lerContato(cadContato.value)) erroCad(false); });
+async function baixarConta(){
+  let blob = null;
+  try { blob = await (CAD.blob || gerarImagem()); } catch(e){}
+  if (!blob){ try { blob = await gerarImagem(); } catch(e){} }
+  if (!blob){ toast('Não deu para gerar a imagem'); return; }
+  blobAtual = blob;
+  const r = await entregarArquivo(nomeImagem(), blob);
+  if (r === 'mostrar' && !document.getElementById('jan-img').classList.contains('on')){ document.getElementById('previa').src = URL.createObjectURL(blob); abrir('jan-img'); }
+  avisarEntrega(r);
+}
+function registrar(lead){
+  CAD.feito = true;
+  gravarCad({feito:true, quando:lead.quando, lead, aGravar:true});
+  marcarUso('cadastrou', 1);
+  mostrarCadFeito();
+  gravarLead(lead);
+}
+function gravarLead(lead){
+  if (!NUVEM.db || !NUVEM.id) return; // sem banco agora: o cadastro espera neste aparelho pela próxima visita
+  naFila('leads/' + NUVEM.id, () => comPrazo(NUVEM.db.doc('leads/' + NUVEM.id).set(lead), 8000)).then(() => {
+    const m = lerCad(); if (m && m.lead && m.lead.quando === lead.quando) gravarCad({feito:true, quando:lead.quando}); // gravou: o aparelho guarda só a marca
+    if (NUVEM.dono) carregarPainel();
+  }, () => {});
+}
+function mostrarCadFeito(nota){
+  document.getElementById('cad-ok').hidden = !CAD.feito;
+  document.getElementById('priv-apagar').innerHTML = CAD.feito
+    ? '<button type="button" class="link" data-apagar-cad>Quer apagar? Toque aqui</button>: a gente apaga o seu contato e a marca deste aparelho.'
+    : nota === 'apagado' ? 'Pronto: o seu contato foi apagado, e a marca deste aparelho também.'
+    : 'Você não deixou contato. Se deixar, apaga quando quiser por aqui.';
+}
+function fimApagar(ok){ mostrarCadFeito(ok ? 'apagado' : ''); toast(ok ? 'Contato apagado' : 'Não apagou. Tente de novo.'); if (ok && NUVEM.dono) carregarPainel(); }
+function apagarCadastro(){
+  const antes = lerCad(), soNoAparelho = !antes || !!antes.aGravar; // soNoAparelho: o contato nunca chegou ao banco
+  const banco = !!(NUVEM.db && NUVEM.id);
+  if (!banco && !soNoAparelho){ fimApagar(false); return; } // está no banco, e o banco não responde agora
+  CAD.feito = false; marcarUso('cadastrou', 0); gravarUsoJa();
+  cadNome.value = ''; cadContato.value = ''; cadOfertas.checked = false;
+  if (!banco){ gravarCad(null); fimApagar(true); return; }
+  gravarCad({aApagar:true});
+  naFila('leads/' + NUVEM.id, () => comPrazo(NUVEM.db.doc('leads/' + NUVEM.id).delete(), 8000)).then(() => { if ((lerCad() || {}).aApagar) gravarCad(null); fimApagar(true); }, () => {
+    if (soNoAparelho){ fimApagar(true); return; } // a marca tenta de novo na próxima visita
+    CAD.feito = true; gravarCad(antes); marcarUso('cadastrou', 1); gravarUsoJa(); fimApagar(false);
+  });
+}
+
+// --- toda saída passa por aqui antes do caminho de sempre ---
+document.addEventListener('click', e => {
+  const el = e.target.closest && e.target.closest('#baixar,#salvar-img,#zap,#copiar'); if (!el) return;
+  if (!pedeCadastro()){ if (el.id === 'zap') saiu(); return; } // as outras saídas contam no próprio botão
+  e.preventDefault(); e.stopPropagation();
+  contar('pediu_saida'); gravarUsoJa();
+  abrirCadastro(SAIDA_DE[el.id], el);
+}, true);
+// o clique do meio não passa por fora da janela nem do contato
+document.addEventListener('auxclick', e => { const z = e.target.closest && e.target.closest('#zap,#cad-zap'); if (z && (z.id === 'cad-zap' || pedeCadastro())) e.preventDefault(); }, true);
+document.addEventListener('click', e => {
+  const t = e.target; if (!t || !t.closest) return;
+  const ap = t.closest('[data-abre-priv]'); if (ap){ mostrarCadFeito(); abrirP(janPriv, ap); return; }
+  const fp = t.closest('[data-fecha-p]'); if (fp){ fecharP(fp.closest('.jan-p')); return; }
+  const del = t.closest('[data-apagar-cad]');
+  if (del){ const naPriv = janPriv.contains(del); apagarCadastro();
+    if (naPriv) janPriv.querySelector('.jan-caixa').focus(); else document.getElementById('copiar').focus({preventScroll:true}); }
+});
+
+// --- painel do dono: só aparece para o dono, na página privada ---
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dataCurta = q => { const d = new Date(q); return isNaN(d) ? '' : d.toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit', year:'numeric'}); };
+let LEADS = [];
+async function carregarPainel(){
+  if (!NUVEM.dono || !NUVEM.db) return;
+  // grava o que falta gravar antes de ler, para os números baterem com o que acabou de acontecer
+  if (CONTA.t) fecharConta();
+  await gravarUsoJa();
+  const lista = document.getElementById('painel-lista');
+  let u, l;
+  try { [u, l] = await Promise.all([comPrazo(NUVEM.db.collection('uso').get(), 8000), comPrazo(NUVEM.db.collection('leads').get(), 8000)]); }
+  catch(e){ lista.innerHTML = '<p class="painel-vazio">Não deu para ler agora. Toque em «Atualizar» daqui a pouco.</p>'; return; }
+  const soma = {visitas:0, contas:0, saidas:0};
+  ((u && u.docs) || []).forEach(d => { const x = (d.data && d.data()) || {}; Object.keys(soma).forEach(k => { soma[k] += +x[k] || 0; }); });
+  LEADS = ((l && l.docs) || []).map(d => Object.assign({id: d.id}, (d.data && d.data()) || {})).sort((a, b) => String(b.quando || '').localeCompare(String(a.quando || '')));
+  const n = (v, t) => `<div><b class="num">${Number(v).toLocaleString('pt-BR')}</b><span>${t}</span></div>`;
+  const um = (v, s, p) => v === 1 ? s : p;
+  document.getElementById('painel-nums').innerHTML = n(LEADS.length, um(LEADS.length, 'cadastro', 'cadastros')) + n(soma.visitas, um(soma.visitas, 'visita', 'visitas')) + n(soma.contas, um(soma.contas, 'conta feita', 'contas feitas')) + n(soma.saidas, um(soma.saidas, 'saída', 'saídas'));
+  lista.innerHTML = LEADS.length
+    ? `<table class="leads"><thead><tr><th>Nome</th><th>Contato</th><th>Ofertas</th><th>Data</th></tr></thead><tbody>${LEADS.map(x => `<tr><td>${esc(x.nome) || '<span class="sem">sem nome</span>'}</td><td>${esc(x.contato)}</td><td>${x.ofertas ? 'sim' : 'não'}</td><td>${esc(dataCurta(x.quando))}</td></tr>`).join('')}</tbody></table>`
+    : '<p class="painel-vazio">Ainda ninguém deixou contato. O primeiro aparece aqui.</p>';
+  document.getElementById('copiar-contatos').disabled = !LEADS.length;
+}
+document.getElementById('painel-atualizar').addEventListener('click', () => { document.getElementById('painel-msg').textContent = ''; carregarPainel(); });
+document.getElementById('copiar-contatos').addEventListener('click', () => {
+  const linhas = [['Nome','Contato','Tipo','Ofertas','De onde','Data','Adultos','Crianças','Bebem','Teto','Total']].concat(LEADS.map(x => { const c = x.conta || {};
+    return [x.nome || '', x.contato || '', x.tipo || '', x.ofertas ? 'sim' : 'não', x.origem || '', dataCurta(x.quando), c.adultos != null ? c.adultos : '', c.criancas != null ? c.criancas : '', c.bebem != null ? c.bebem : '', c.teto || '', c.total != null ? Number(c.total).toFixed(2).replace('.', ',') : '']; }));
+  const t = linhas.map(l => l.map(v => String(v).replace(/[\t\r\n]+/g, ' ')).join('\t')).join('\n');
+  const msg = document.getElementById('painel-msg'), area = document.getElementById('painel-texto');
+  const manual = () => { area.hidden = false; area.value = t; area.focus(); area.select(); let ok = false; try { ok = document.execCommand('copy'); } catch(_){} msg.textContent = ok ? 'Contatos copiados: ' + LEADS.length + '.' : 'Selecionado: copie à mão.'; };
+  try { navigator.clipboard.writeText(t).then(() => { area.hidden = true; msg.textContent = 'Contatos copiados: ' + LEADS.length + '.'; }, manual); } catch(e){ manual(); }
+});
+
+// --- partida: o serviço de dados da página privada, se houver ---
+async function iniciarNuvem(){
+  const usar = nome => comPrazo(Promise.resolve().then(() => window.claude.use(nome)), 5000).catch(() => null);
+  let db = null, user = null;
+  if (temClaude) [db, user] = await Promise.all([usar('db'), usar('user')]);
+  NUVEM.db = db || null;
+  if (user){
+    NUVEM.id = await comPrazo(Promise.resolve().then(() => user.id()), 4000).catch(() => null);
+    NUVEM.dono = !!(await comPrazo(Promise.resolve().then(() => user.isOwner()), 4000).catch(() => false));
+  }
+  NUVEM.pronto = true;
+  if (NUVEM.db && NUVEM.id){
+    const m = lerCad();
+    if (m && m.aApagar) await naFila('leads/' + NUVEM.id, () => comPrazo(NUVEM.db.doc('leads/' + NUVEM.id).delete(), 8000)).then(() => { if ((lerCad() || {}).aApagar) gravarCad(null); }, () => {});
+    else if (m && m.aGravar && m.lead){ CAD.feito = true; gravarLead(m.lead); }
+    else if (!CAD.feito){
+      try { const sn = await comPrazo(NUVEM.db.doc('leads/' + NUVEM.id).get(), 6000);
+        if (sn && sn.exists && !CAD.feito){ CAD.feito = true; gravarCad({feito:true, quando: ((sn.data && sn.data()) || {}).quando || new Date().toISOString()}); } } catch(e){}
+    }
+    mostrarCadFeito();
+    await iniciarUso(); // a visita entra antes de o painel ler os números
+  }
+  mostrarCadFeito();
+  if (NUVEM.db && NUVEM.dono){ document.getElementById('painel-dono').hidden = false; carregarPainel(); }
+}
+mostrarCadFeito();
+iniciarNuvem().catch(() => { NUVEM.pronto = true; });
+</script>
+</body>
+</html>
