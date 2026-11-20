@@ -950,7 +950,7 @@ function textoLista(c, curto){
   if (estado.levaCerveja && c.B) t += `Cerveja: cada um leva a sua\n`;
   let cat = '';
   c.L.forEach(l => { if (l.cat !== cat){ cat = l.cat; t += `\n*${cat}*\n`; } t += `• ${l.nome}: ${l.txt}\n`; });
-  t += `\nPreços de referência; a conta fecha com a nota do mercado.\nFeito na Lista da Brasa`;
+  t += `\nPreços de referência; a conta fecha com a nota do mercado.\nFeito na Lista da Brasa: https://brunonmose.github.io/lista-da-brasa/`;
   return t;
 }
 
@@ -1072,14 +1072,15 @@ async function gerarImagem(){
   x.font = `700 24px ${IF}`; x.fillStyle = '#C2410C'; x.fillText('O QUE VAI NA LISTA', 64, y); y += 18;
   let resumo = c.L.filter(l => ['Carnes','Bebidas'].includes(l.cat) || ['paoalho','carvao'].includes(l.id)).map(l => ({nome:l.nome, txt:l.txt}));
   if (estado.levaCerveja && c.B) resumo.push({nome:'Cerveja', txt:'cada um leva a sua'});
-  const fim = H - 116; const minAlt = 34;
+  const fim = H - 150; /* cópia pública: espaço para o endereço no pé da imagem */ const minAlt = 34;
   if ((fim - y) / resumo.length < minAlt) resumo = resumo.slice(0, Math.max(1, Math.floor((fim - y) / minAlt)));
   const alt = Math.min(62, (fim - y) / Math.max(1, resumo.length));
   x.font = `500 ${Math.round(Math.min(34, alt * .64))}px ${IF}`;
   resumo.forEach(l => { y += alt; x.fillStyle = '#1F1A17'; x.textAlign = 'left'; x.fillText(l.nome, 64, y); x.textAlign = 'right'; x.fillStyle = '#5C534C'; x.fillText(l.txt.replace(/ \(.*\)/,''), W - 64, y);
     x.strokeStyle = '#E2D6C4'; x.lineWidth = 2; x.beginPath(); x.moveTo(64, y + alt * .3); x.lineTo(W - 64, y + alt * .3); x.stroke(); });
   x.textAlign = 'left'; x.font = `500 24px ${IF}`; x.fillStyle = '#5C534C';
-  x.fillText('Preços de referência. A conta fecha com a nota do mercado.', 64, H - 74);
+  x.fillText('Preços de referência. A conta fecha com a nota do mercado.', 64, H - 100);
+  x.font = `700 24px ${IF}`; x.fillStyle = '#C2410C'; x.fillText('Faça a sua conta: brunonmose.github.io/lista-da-brasa', 64, H - 62);
   return await new Promise(ok => cv.toBlob(ok, 'image/png'));
 }
 document.getElementById('baixar').addEventListener('click', async () => {
